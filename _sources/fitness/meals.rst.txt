@@ -1,6 +1,6 @@
 Meals
 =====
-This module allows you to create, view, search for, modify, and delete meals. 
+This module allows you to create, view, search for, modify, and delete meals. A
 
 .. warning::
   All endpoints in this module require authentification token provided in the ``Authorization`` header.
