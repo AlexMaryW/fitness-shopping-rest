@@ -3,6 +3,26 @@ Tags
 
 This module allows you to create, view, and delete tags.
 
+Tag Information
+''''''''''''''''
+
+.. list-table:: 
+  :widths: 25 10 10 30
+  :header-rows: 1
+
+  * - Attribute
+    - Type
+    - Required
+    - Description
+  * - ``tag``
+    - ``str``
+    - Yes
+    - The name of the tag.
+  * - ``user_id``
+    - ``int``
+    - Yes
+    - The id of the currently logged in user is automatically assigned to the tag.
+
 
 HTTP Endpoints
 ''''''''''''''
@@ -10,6 +30,34 @@ HTTP Endpoints
 .. http:get:: /tags/
 
   Allows you to view all tags.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /tags
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "tags": [
+          "men",
+          "women",
+          "red",
+          "white",
+          "logo",
+          "printed",
+          "cotton",
+          "polyester",
+          "shortsleeve", 
+          ]
+        }
 
 
 .. http:post:: /tags/<tag>
@@ -31,11 +79,37 @@ HTTP Endpoints
 
   .. warning::
     This endpoint requires authentification token provided in the ``Authorization`` header.
+  
+  .. attention::
 
+    This endpoint requires admin status.
+
+  .. attention::  
+    The request is successful only when the ``tag`` is assigned to your ``user_id``.
 
   .. admonition:: Status Codes
 
-    This endpoint can return ``401`` status code.  
+    This endpoint can return ``401`` status code.
+
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        POST /tags/silk
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+
+  **Example response**:
+
+    .. sourcecode:: http
+          
+          {
+        "message": "Tag added!"
+          }
+          
 
 .. http:delete:: /tags/<tag>
 
@@ -61,38 +135,28 @@ HTTP Endpoints
 
     This endpoint requires admin status.
 
+  .. attention::  
+    The request is successful only when the ``tag`` is assigned to your ``user_id``.
+
   .. admonition:: Status Codes
 
     This endpoint can return ``401`` or ``404`` status code.
 
 
-**Example request**:
+  **Example request**:
 
-   .. sourcecode:: http
+    .. sourcecode:: http
 
-      GET /users/123/posts/web HTTP/1.1
-      Host: example.com
-      Accept: application/json, text/javascript
+        DELETE /tags/silk
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
 
-**Example response**:
+  **Example response**:
 
-   .. sourcecode:: http
-
-      HTTP/1.1 200 OK
-      Vary: Accept
-      Content-Type: text/javascript
-
-      [
+    .. sourcecode:: http
+        
         {
-          "post_id": 12345,
-          "author_id": 123,
-          "tags": ["server", "web"],
-          "subject": "I tried Nginx"
-        },
-        {
-          "post_id": 12346,
-          "author_id": 123,
-          "tags": ["html5", "standards", "web"],
-          "subject": "We go to HTML 5"
+      "message": "Tag removed!"
         }
-      ]

@@ -33,10 +33,13 @@ Each review can be assigned the following information:
     - ``str``
     - No
     - The content of your review. You can make it as long as you wish.
-
+  * - ``user_id``
+    - ``int``
+    - Yes
+    - The id of the currently logged in user is automatically assigned to the review.
   
 .. note::
-  The default value of all attributes, except ``product_id``, is ``None``.
+  The default value of all attributes, except ``product_id`` and ``user_id``, is ``None``.
 
 HTTP Endpoints
 ''''''''''''''

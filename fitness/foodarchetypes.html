@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Meals" href="meals.html" /><link rel="prev" title="Foods" href="foods.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Meals and Food Items" href="meals.html" /><link rel="prev" title="Activities" href="activities.html" />
 
     <!-- Generated with Sphinx 5.1.1 and Furo 2023.03.27 -->
         <title>Food Archetypes - Fitness Shopping REST API documentation</title>
@@ -158,17 +158,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">User Module</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Fitness</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="activities.html">Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="foods.html">Foods</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Food Archetypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meals.html">Meals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meals.html">Meals and Food Items</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../shopping/index.html">Shopping</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Application, Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/categories.html">Categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/messages.html">Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/products.html">Products</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/reviews.html">Reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shopping/products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/tags.html">Tags</a></li>
 </ul>
 </li>
@@ -262,12 +259,17 @@
 <td><p>No</p></td>
 <td><p>The amount of fat in a food archetype, measured in grams.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the currently logged in user is automatically assigned to the food archetype.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The default value of each attribute is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>The default value of each attribute, except <code class="docutils literal notranslate"><span class="pre">user_id</span></code>, is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </div>
 </section>
 <section id="http-endpoints">
@@ -280,6 +282,51 @@
 <p class="admonition-title">Status Codes</p>
 <p>If the food archetype hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /foods/
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+&quot;foods&quot;: [
+    {
+        &quot;calories&quot;: 78,
+        &quot;carbohydrates&quot;: 0.6,
+        &quot;fat&quot;: 5,
+        &quot;id&quot;: 1,
+        &quot;measure&quot;: &quot;unit&quot;,
+        &quot;name&quot;: &quot;egg&quot;,
+        &quot;protein&quot;: 6
+    },
+    {
+        &quot;calories&quot;: 69,
+        &quot;carbohydrates&quot;: 12,
+        &quot;fat&quot;: 0.9,
+        &quot;id&quot;: 2,
+        &quot;measure&quot;: &quot;slice&quot;,
+        &quot;name&quot;: &quot;whole wheat bread&quot;,
+        &quot;protein&quot;: 3.6
+    },
+    {
+        &quot;calories&quot;: 83,
+        &quot;carbohydrates&quot;: 12,
+        &quot;fat&quot;: 0.2,
+        &quot;id&quot;: 3,
+        &quot;measure&quot;: &quot;cup&quot;,
+        &quot;name&quot;: &quot;skim milk&quot;,
+        &quot;protein&quot;: 8.3
+    }
+  ]
+}
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http get">
@@ -316,6 +363,29 @@ If successful, the endpoint returns <a class="reference internal" href="#food-ar
 <p class="admonition-title">Status Codes</p>
 <p>If the food archetype hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /foods/3
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;calories&quot;: 83,
+&quot;carbohydrates&quot;: 12,
+&quot;fat&quot;: 0.2,
+&quot;id&quot;: 3,
+&quot;measure&quot;: &quot;cup&quot;,
+&quot;name&quot;: &quot;skim milk&quot;,
+&quot;protein&quot;: 8.3
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http post">
@@ -331,13 +401,40 @@ For each unique food archetype, you can add <a class="reference internal" href="
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">403</span></code> or <code class="docutils literal notranslate"><span class="pre">400</span></code> status code.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>POST /foods/
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;name&quot;: &quot;greek yoghurt&quot;,
+&quot;measure&quot;: &quot;cup&quot;,
+&quot;calories&quot;: 146,
+&quot;carbohydrates&quot;: 9.8,
+&quot;fat&quot;: 4.9,
+&quot;protein&quot;: 20.0
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;id&quot;: 20,
+&quot;message&quot;: &quot;Food created!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http put">
 <dt class="sig sig-object http" id="put--foods-">
 <span class="sig-name descname"><span class="pre">PUT</span> </span><span class="sig-name descname"><span class="pre">/foods/</span></span><a class="headerlink" href="#put--foods-" title="Permalink to this definition">#</a></dt>
-<dd><p>Allows you to replace a food archetype with a new one.
-You can add <a class="reference internal" href="#food-archetype-information"><span class="std std-ref">the following information</span></a> for your new food archetype.</p>
+<dd><p>Allows you to replace all food archetypes assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code> with new ones.
+You can add <a class="reference internal" href="#food-archetype-information"><span class="std std-ref">the following information</span></a> for your new food archetypes.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This endpoint requires admin status.</p>
@@ -346,12 +443,61 @@ You can add <a class="reference internal" href="#food-archetype-information"><sp
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">403</span></code> or <code class="docutils literal notranslate"><span class="pre">400</span></code> status code.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  PUT /foods/
+  Host: example.com
+  Accept: application/json
+  x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;foods&quot;: [
+    {
+      &quot;calories&quot;: 43,
+      &quot;carbohydrates&quot;: 0.1,
+      &quot;fat&quot;: 3.3,
+      &quot;id&quot;: 4,
+      &quot;measure&quot;: &quot;slice&quot;,
+      &quot;name&quot;: &quot;bacon&quot;,
+      &quot;protein&quot;: 3
+  },
+  {
+      &quot;calories&quot;: 209,
+      &quot;carbohydrates&quot;: 26,
+      &quot;fat&quot;: 8,
+      &quot;id&quot;: 5,
+      &quot;measure&quot;: &quot;cup&quot;,
+      &quot;name&quot;: &quot;chocolate milk&quot;,
+      &quot;protein&quot;: 8
+  },
+  {
+      &quot;calories&quot;: 231,
+      &quot;carbohydrates&quot;: 0,
+      &quot;fat&quot;: 5,
+      &quot;id&quot;: 6,
+      &quot;measure&quot;: &quot;cup&quot;,
+      &quot;name&quot;: &quot;chicken breast&quot;,
+      &quot;protein&quot;: 43
+    }
+  ]
+}
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Foods updated!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http put">
 <dt class="sig sig-object http" id="put--foods--food_id-">
 <span class="sig-name descname"><span class="pre">PUT</span> </span><span class="sig-name descname"><span class="pre">/foods/&lt;food_id&gt;</span></span><a class="headerlink" href="#put--foods--food_id-" title="Permalink to this definition">#</a></dt>
-<dd><p>Allows you to modify <a class="reference internal" href="#food-archetype-information"><span class="std std-ref">a food archetype’s information</span></a>.</p>
+<dd><p>Allows you to modify <a class="reference internal" href="#food-archetype-information"><span class="std std-ref">a food archetype’s information</span></a> (except the <code class="docutils literal notranslate"><span class="pre">user_id</span></code>).</p>
 <div class="table-wrapper colwidths-given docutils container" id="id2">
 <table class="docutils align-default" id="id2">
 <caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
@@ -381,10 +527,40 @@ You can add <a class="reference internal" href="#food-archetype-information"><sp
 <p class="admonition-title">Attention</p>
 <p>This endpoint requires admin status.</p>
 </div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">food_id</span></code> in the URL is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
 <div class="admonition-status-codes admonition">
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">403</span></code>, <code class="docutils literal notranslate"><span class="pre">404</span></code>, or <code class="docutils literal notranslate"><span class="pre">400</span></code> status code.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>PUT /foods/20
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;name&quot;: &quot;greek yoghurt&quot;,
+&quot;measure&quot;: &quot;100g&quot;,
+&quot;calories&quot;: 59,
+&quot;carbohydrates&quot;: 3.6,
+&quot;fat&quot;: 2.0,
+&quot;protein&quot;: 10.0
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Food updated!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http delete">
@@ -420,43 +596,33 @@ You can add <a class="reference internal" href="#food-archetype-information"><sp
 <p class="admonition-title">Attention</p>
 <p>This endpoint requires admin status.</p>
 </div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">food_id</span></code> in the URL is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
 <div class="admonition-status-codes admonition">
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">403</span></code> or <code class="docutils literal notranslate"><span class="pre">404</span></code> status code.</p>
 </div>
-</dd></dl>
-
 <p><strong>Example request</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/users/123/posts/web</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">example.com</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json, text/javascript</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>DELETE /foods/20
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Vary</span><span class="o">:</span> <span class="l">Accept</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
-
-<span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12345</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;server&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;I tried Nginx&quot;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12346</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;html5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;standards&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;We go to HTML 5&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">]</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Food deleted!&quot;
+  }
 </pre></div>
 </div>
 </div></blockquote>
+</dd></dl>
+
 </section>
 </section>
 
@@ -470,18 +636,18 @@ You can add <a class="reference internal" href="#food-archetype-information"><sp
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Meals</div>
+                <div class="title">Meals and Food Items</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="foods.html">
+          <a class="prev-page" href="activities.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Foods</div>
+                <div class="title">Activities</div>
                 
               </div>
             </a>

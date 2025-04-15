@@ -102,16 +102,67 @@ HTTP Endpoints
 
     This endpoint can return ``401`` or ``404`` status code.
 
+  
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /users/janedoe44
+        Host: example.com
+        Accept: application/json
+        x-access-token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+      
+
+  **Example response**:
+
+    .. sourcecode:: http
+
+          {
+      "admin": false,
+      "firstName": "jane",
+      "goalDailyActivity": 0,
+      "goalDailyCalories": 0,
+      "goalDailyCarbohydrates": 0,
+      "goalDailyFat": 0,
+      "goalDailyProtein": 0,
+      "lastName": "doe",
+      "username": "janedoe44"
+          }
+      
+
 .. http:post:: /users/
 
   Allows you to create an account.
   For each unique account, you can add :ref:`the following information<User Information>`.
 
-
   .. admonition:: Status Codes
 
     This endpoint can return ``400``, ``409``, or ``403`` status code.
 
+
+  **Example request**:
+
+    .. sourcecode:: json
+
+      GET /users/
+      Host: example.com  
+      Accept: application/json
+
+          {
+        "username": "janedoe44",
+        "password": "janedoe44",
+        "firstName": "jane",
+        "lastName": "doe"
+          }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "message": "User created!"
+        }
+        
 .. http:put:: /users/<username>
 
   Allows you to modify your :ref:`user information<User Information>`.
@@ -137,10 +188,21 @@ HTTP Endpoints
 
     This endpoint requires admin status.
 
-
   .. admonition:: Status Codes
 
     This endpoint can return ``404`` or ``401`` status code. 
+
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+      GET /users/janedoe44/
+      Host: example.com  
+      Accept: application/json
+      x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+
 
 .. http:delete:: /users/<username>
 
@@ -172,33 +234,51 @@ HTTP Endpoints
 
     This endpoint can return ``404`` or ``401`` status code.
 
-**Example request**:
+  **Example request**:
 
-   .. sourcecode:: http
+    .. sourcecode:: http
 
-      GET /users/123/posts/web HTTP/1.1
-      Host: example.com
-      Accept: application/json, text/javascript
+      GET /users/janedoe44/
+      Host: example.com  
+      Accept: application/json
+      x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-**Example response**:
+  **Example response**:
 
-   .. sourcecode:: http
-
-      HTTP/1.1 200 OK
-      Vary: Accept
-      Content-Type: text/javascript
-
-      [
+    .. sourcecode:: http
+                
         {
-          "post_id": 12345,
-          "author_id": 123,
-          "tags": ["server", "web"],
-          "subject": "I tried Nginx"
-        },
-        {
-          "post_id": 12346,
-          "author_id": 123,
-          "tags": ["html5", "standards", "web"],
-          "subject": "We go to HTML 5"
+      "message": "User deleted!"
         }
-      ]
+
+
+How to Log In
+'''''''''''''
+
+.. http:get:: /login/
+
+  Allows you to obtain the authorization token using Basic Auth.
+
+  .. admonition:: Status Codes
+
+    This endpoint can return ``401`` status code.
+
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+      GET /login/
+      Host: example.com  
+      Authorization: Basic amFuZWRvZTQ0OmphbmVkb2U0NA==  
+      Accept: application/json
+
+
+  **Example response**:
+
+    .. sourcecode:: http
+
+          {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4"
+          }
+

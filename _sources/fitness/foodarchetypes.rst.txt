@@ -43,9 +43,13 @@ Each food archetype can be assigned the following information:
     - ``float``
     - No
     - The amount of fat in a food archetype, measured in grams.
-  
+  * - ``user_id``
+    - ``int``
+    - Yes
+    - The id of the currently logged in user is automatically assigned to the food archetype.
+
 .. note::
-  The default value of each attribute is ``None``.
+  The default value of each attribute, except ``user_id``, is ``None``.
 
 HTTP Endpoints
 ''''''''''''''
@@ -57,6 +61,52 @@ HTTP Endpoints
   .. admonition:: Status Codes
 
     If the food archetype hasn't been found, ``404`` status code is returned.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /foods/
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+  **Example response**:
+
+    .. sourcecode:: http
+
+      {
+      "foods": [
+          {
+              "calories": 78,
+              "carbohydrates": 0.6,
+              "fat": 5,
+              "id": 1,
+              "measure": "unit",
+              "name": "egg",
+              "protein": 6
+          },
+          {
+              "calories": 69,
+              "carbohydrates": 12,
+              "fat": 0.9,
+              "id": 2,
+              "measure": "slice",
+              "name": "whole wheat bread",
+              "protein": 3.6
+          },
+          {
+              "calories": 83,
+              "carbohydrates": 12,
+              "fat": 0.2,
+              "id": 3,
+              "measure": "cup",
+              "name": "skim milk",
+              "protein": 8.3
+          }
+        ]
+      }
+
 
 .. http:get:: foods/<food_id>
 
@@ -79,6 +129,29 @@ HTTP Endpoints
   .. admonition:: Status Codes
 
     If the food archetype hasn't been found, ``404`` status code is returned.
+  
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /foods/3
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+  **Example response**:
+
+    .. sourcecode:: http
+      
+        {
+      "calories": 83,
+      "carbohydrates": 12,
+      "fat": 0.2,
+      "id": 3,
+      "measure": "cup",
+      "name": "skim milk",
+      "protein": 8.3
+        }
 
 .. http:post:: /foods/
 
@@ -92,21 +165,99 @@ HTTP Endpoints
 
     This endpoint can return ``403`` or ``400`` status code.
 
+  **Example request**:
+
+    .. sourcecode:: http
+
+        POST /foods/
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+          {
+        "name": "greek yoghurt",
+        "measure": "cup",
+        "calories": 146,
+        "carbohydrates": 9.8,
+        "fat": 4.9,
+        "protein": 20.0
+          }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "id": 20,
+      "message": "Food created!"
+        }
+      
+    
 .. http:put:: /foods/
 
-  Allows you to replace a food archetype with a new one.
-  You can add :ref:`the following information<Food Archetype Information>` for your new food archetype.
+  Allows you to replace all food archetypes assigned to your ``user_id`` with new ones.
+  You can add :ref:`the following information<Food Archetype Information>` for your new food archetypes.
 
   .. attention::
     This endpoint requires admin status.
 
   .. admonition:: Status Codes
 
-    This endpoint can return ``403`` or ``400`` status code.   
+    This endpoint can return ``403`` or ``400`` status code.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /foods/
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+        {
+      "foods": [
+          {
+            "calories": 43,
+            "carbohydrates": 0.1,
+            "fat": 3.3,
+            "id": 4,
+            "measure": "slice",
+            "name": "bacon",
+            "protein": 3
+        },
+        {
+            "calories": 209,
+            "carbohydrates": 26,
+            "fat": 8,
+            "id": 5,
+            "measure": "cup",
+            "name": "chocolate milk",
+            "protein": 8
+        },
+        {
+            "calories": 231,
+            "carbohydrates": 0,
+            "fat": 5,
+            "id": 6,
+            "measure": "cup",
+            "name": "chicken breast",
+            "protein": 43
+          }
+        ]
+      }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "message": "Foods updated!"
+        }
+
 
 .. http:put:: /foods/<food_id>
 
-  Allows you to modify :ref:`a food archetype's information<Food Archetype Information>`.
+  Allows you to modify :ref:`a food archetype's information<Food Archetype Information>` (except the ``user_id``).
 
   .. list-table:: Parameters
     :widths: 25 10 10 30
@@ -123,10 +274,39 @@ HTTP Endpoints
 
   .. attention::
     This endpoint requires admin status.
+
+  .. attention::
+    The request is successful only when the ``food_id`` in the URL is assigned to your ``user_id``.
     
   .. admonition:: Status Codes
 
-    This endpoint can return ``403``, ``404``, or ``400`` status code. 
+    This endpoint can return ``403``, ``404``, or ``400`` status code.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /foods/20
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+          {
+        "name": "greek yoghurt",
+        "measure": "100g",
+        "calories": 59,
+        "carbohydrates": 3.6,
+        "fat": 2.0,
+        "protein": 10.0
+          }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "message": "Food updated!"
+        }
 
 .. http:delete:: foods/<food_id>
 
@@ -148,37 +328,27 @@ HTTP Endpoints
   .. attention::
     This endpoint requires admin status.
 
+  .. attention::
+    The request is successful only when the ``food_id`` in the URL is assigned to your ``user_id``.
+
   .. admonition:: Status Codes
     
     This endpoint can return ``403`` or ``404`` status code.
 
-**Example request**:
+  **Example request**:
 
-   .. sourcecode:: http
+    .. sourcecode:: http
 
-      GET /users/123/posts/web HTTP/1.1
-      Host: example.com
-      Accept: application/json, text/javascript
+        DELETE /foods/20
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-**Example response**:
 
-   .. sourcecode:: http
+  **Example response**:
 
-      HTTP/1.1 200 OK
-      Vary: Accept
-      Content-Type: text/javascript
-
-      [
+    .. sourcecode:: http
+                
         {
-          "post_id": 12345,
-          "author_id": 123,
-          "tags": ["server", "web"],
-          "subject": "I tried Nginx"
-        },
-        {
-          "post_id": 12346,
-          "author_id": 123,
-          "tags": ["html5", "standards", "web"],
-          "subject": "We go to HTML 5"
+      "message": "Food deleted!"
         }
-      ]

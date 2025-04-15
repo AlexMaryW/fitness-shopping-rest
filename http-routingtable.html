@@ -156,17 +156,14 @@
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">User Module</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="fitness/index.html">Fitness</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="fitness/activities.html">Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fitness/foods.html">Foods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fitness/foodarchetypes.html">Food Archetypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fitness/meals.html">Meals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitness/meals.html">Meals and Food Items</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="shopping/index.html">Shopping</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Application, Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/categories.html">Categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shopping/messages.html">Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shopping/products.html">Products</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shopping/reviews.html">Reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shopping/products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/tags.html">Tags</a></li>
 </ul>
 </li>
@@ -206,7 +203,7 @@
           
 <section class="domainindex-section">
   <h1>HTTP Routing Table</h1>
-  <div class="domainindex-jumpbox"><a href="#cap-/activities"><strong>/activities</strong></a> | <a href="#cap-/application"><strong>/application</strong></a> | <a href="#cap-/categories"><strong>/categories</strong></a> | <a href="#cap-/foods"><strong>/foods</strong></a> | <a href="#cap-/meals"><strong>/meals</strong></a> | <a href="#cap-/products"><strong>/products</strong></a> | <a href="#cap-/tags"><strong>/tags</strong></a> | <a href="#cap-/users"><strong>/users</strong></a></div>
+  <div class="domainindex-jumpbox"><a href="#cap-/activities"><strong>/activities</strong></a> | <a href="#cap-/application"><strong>/application</strong></a> | <a href="#cap-/categories"><strong>/categories</strong></a> | <a href="#cap-/foods"><strong>/foods</strong></a> | <a href="#cap-/login"><strong>/login</strong></a> | <a href="#cap-/meals"><strong>/meals</strong></a> | <a href="#cap-/products"><strong>/products</strong></a> | <a href="#cap-/tags"><strong>/tags</strong></a> | <a href="#cap-/users"><strong>/users</strong></a></div>
 </section>
 <table class="domainindex-table">
   <tr class="pcap">
@@ -260,13 +257,13 @@
   <tr>
     <td></td>
     <td>
-        <a href="shopping/messages.html#get--application-messages-"><code class="xref">GET /application/messages/</code></a></td><td>
+        <a href="shopping/applications.html#get--application-messages-"><code class="xref">GET /application/messages/</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
     <td></td>
     <td>
-        <a href="shopping/messages.html#get--application-messages--message_id--"><code class="xref">GET /application/messages/&lt;message_id&gt;/</code></a></td><td>
+        <a href="shopping/applications.html#get--application-messages--message_id--"><code class="xref">GET /application/messages/&lt;message_id&gt;/</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
@@ -290,7 +287,7 @@
   <tr>
     <td></td>
     <td>
-        <a href="shopping/messages.html#post--application-messages-"><code class="xref">POST /application/messages/</code></a></td><td>
+        <a href="shopping/applications.html#post--application-messages-"><code class="xref">POST /application/messages/</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
@@ -308,13 +305,19 @@
   <tr>
     <td></td>
     <td>
-        <a href="shopping/messages.html#delete--application-messages-"><code class="xref">DELETE /application/messages/</code></a></td><td>
+        <a href="shopping/applications.html#put--application-"><code class="xref">PUT /application/</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
     <td></td>
     <td>
-        <a href="shopping/messages.html#delete--application-messages--message_id--"><code class="xref">DELETE /application/messages/&lt;message_id&gt;/</code></a></td><td>
+        <a href="shopping/applications.html#delete--application-messages-"><code class="xref">DELETE /application/messages/</code></a></td><td>
+    <em></em></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+        <a href="shopping/applications.html#delete--application-messages--message_id--"><code class="xref">DELETE /application/messages/&lt;message_id&gt;/</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
@@ -416,6 +419,18 @@
   <tr class="pcap">
     <td></td><td>&#160;</td><td></td>
   </tr>
+  <tr class="cap" id="cap-/login">
+    <td></td><td><strong>/login</strong></td><td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+        <a href="gettingstarted.html#get--login-"><code class="xref">GET /login/</code></a></td><td>
+    <em></em></td>
+  </tr>
+  <tr class="pcap">
+    <td></td><td>&#160;</td><td></td>
+  </tr>
   <tr class="cap" id="cap-/meals">
     <td></td><td><strong>/meals</strong></td><td></td>
   </tr>
@@ -434,13 +449,13 @@
   <tr>
     <td></td>
     <td>
-        <a href="fitness/foods.html#get--meals--meal_id--foods-"><code class="xref">GET /meals/&lt;meal_id&gt;/foods/</code></a></td><td>
+        <a href="fitness/meals.html#get--meals--meal_id--foods-"><code class="xref">GET /meals/&lt;meal_id&gt;/foods/</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
     <td></td>
     <td>
-        <a href="fitness/foods.html#get--meals--meal_id--foods--food_id-"><code class="xref">GET /meals/&lt;meal_id&gt;/foods/&lt;food_id&gt;</code></a></td><td>
+        <a href="fitness/meals.html#get--meals--meal_id--foods--food_id-"><code class="xref">GET /meals/&lt;meal_id&gt;/foods/&lt;food_id&gt;</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
@@ -452,7 +467,7 @@
   <tr>
     <td></td>
     <td>
-        <a href="fitness/foods.html#post--meals--meal_id--foods-"><code class="xref">POST /meals/&lt;meal_id&gt;/foods/</code></a></td><td>
+        <a href="fitness/meals.html#post--meals--meal_id--foods-"><code class="xref">POST /meals/&lt;meal_id&gt;/foods/</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
@@ -464,7 +479,7 @@
   <tr>
     <td></td>
     <td>
-        <a href="fitness/foods.html#put--meals--meal_id--foods--food_id-"><code class="xref">PUT /meals/&lt;meal_id&gt;/foods/&lt;food_id&gt;</code></a></td><td>
+        <a href="fitness/meals.html#put--meals--meal_id--foods--food_id-"><code class="xref">PUT /meals/&lt;meal_id&gt;/foods/&lt;food_id&gt;</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
@@ -476,7 +491,7 @@
   <tr>
     <td></td>
     <td>
-        <a href="fitness/foods.html#delete--meals--meal_id--foods--food_id-"><code class="xref">DELETE /meals/&lt;meal_id&gt;/foods/&lt;food_id&gt;</code></a></td><td>
+        <a href="fitness/meals.html#delete--meals--meal_id--foods--food_id-"><code class="xref">DELETE /meals/&lt;meal_id&gt;/foods/&lt;food_id&gt;</code></a></td><td>
     <em></em></td>
   </tr>
   <tr class="pcap">
@@ -500,13 +515,13 @@
   <tr>
     <td></td>
     <td>
-        <a href="shopping/reviews.html#get--products--product_id--reviews-"><code class="xref">GET /products/&lt;product_id&gt;/reviews/</code></a></td><td>
+        <a href="shopping/products.html#get--products--product_id--reviews-"><code class="xref">GET /products/&lt;product_id&gt;/reviews/</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
     <td></td>
     <td>
-        <a href="shopping/reviews.html#get--products--product_id--reviews--review_id-"><code class="xref">GET /products/&lt;product_id&gt;/reviews/&lt;review_id&gt;</code></a></td><td>
+        <a href="shopping/products.html#get--products--product_id--reviews--review_id-"><code class="xref">GET /products/&lt;product_id&gt;/reviews/&lt;review_id&gt;</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
@@ -524,13 +539,13 @@
   <tr>
     <td></td>
     <td>
-        <a href="shopping/reviews.html#post--products--product_id--reviews-"><code class="xref">POST /products/&lt;product_id&gt;/reviews/</code></a></td><td>
+        <a href="shopping/products.html#post--products--product_id--reviews-"><code class="xref">POST /products/&lt;product_id&gt;/reviews/</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
     <td></td>
     <td>
-        <a href="shopping/products.html#post--products--product_id--tag--tag-"><code class="xref">POST /products/&lt;product_id&gt;/tag/&lt;tag&gt;</code></a></td><td>
+        <a href="shopping/products.html#post--products--product_id--tags--tag-"><code class="xref">POST /products/&lt;product_id&gt;/tags/&lt;tag&gt;</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
@@ -542,7 +557,7 @@
   <tr>
     <td></td>
     <td>
-        <a href="shopping/reviews.html#put--products--product_id--reviews--review_id-"><code class="xref">PUT /products/&lt;product_id&gt;/reviews/&lt;review_id&gt;</code></a></td><td>
+        <a href="shopping/products.html#put--products--product_id--reviews--review_id-"><code class="xref">PUT /products/&lt;product_id&gt;/reviews/&lt;review_id&gt;</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>
@@ -554,7 +569,7 @@
   <tr>
     <td></td>
     <td>
-        <a href="shopping/reviews.html#delete--products--product_id--reviews--review_id-"><code class="xref">DELETE /products/&lt;product_id&gt;/reviews/&lt;review_id&gt;</code></a></td><td>
+        <a href="shopping/products.html#delete--products--product_id--reviews--review_id-"><code class="xref">DELETE /products/&lt;product_id&gt;/reviews/&lt;review_id&gt;</code></a></td><td>
     <em></em></td>
   </tr>
   <tr>

@@ -1,8 +1,11 @@
-Products
+Products, Product Reviews, and Product Tags
 ========
 
+Products
+########
+
 This module allows you to create, view, search for, modify, and delete products. 
-It also allows you to create and delete tags assigned to a product.
+To each product, you can assign :ref:`tags<Product Tags>` and :ref:`reviews<Product Reviews>`.
 
 Product Information
 '''''''''''''''''''
@@ -41,17 +44,54 @@ Each product can be assigned the following information:
     - ``float``
     - No
     - The product's price, e.g. $25.99.
+  * - ``user_id``
+    - ``int``
+    - Yes
+    - The id of the currently logged in user is automatically assigned to the product.
   
 .. note::
-  The default value of each attribute is ``None``.
+  The default value of each attribute, except ``user_id``, is ``None``.
 
-HTTP Endpoints
+Product - HTTP Endpoints
 ''''''''''''''
 
 .. http:get:: /products/
 
   Allows you to view all products and :ref:`their information<Product Information>`.
 
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /products
+        Host: example.com
+        Accept: application/json
+  
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "products": [
+          {
+            "category": "plushes",
+            "description": "A perfect fuzzy, fluffy, Bucky Badger!",
+            "id": 3,
+            "image": "https://www.uwbookstore.com/storeimages/177-260250-2_hi.jpg",
+            "name": "Bucky Badger Plush",
+            "price": 13
+          },
+          {
+            "category": "leggings",
+            "description": "Show off your Wisconsin spirit with these Bucky Badger leggings! These leggings feature a red spacedye detail down either side. They have a full color Bucky Badger on the left side and come complete with side pockets for your phone or other belongings. They're perfect for game day or wearing to the gym!",
+            "id": 4,
+            "image": "https://www.uwbookstore.com/storeimages/177-1532069-2_hi.jpg",
+            "name": "Wisconsin Leggings",
+            "price": 50
+            }
+          ]
+        }
 
 .. http:get:: /products/<product_id>
 
@@ -71,32 +111,34 @@ HTTP Endpoints
       - Yes
       - The id of a product which you'd like to view.
 
+  .. attention::
+    The request is successful only when the ``product_id`` is assigned to your ``user_id``.
 
   .. admonition:: Status Codes
 
     If a product hasn't been found, ``404`` status code is returned.
 
-.. http:get:: /products/<product_id>/tags/
+  **Example request**:
 
-  Allows you to view tags assigned to a product.
+    .. sourcecode:: http
 
-  .. list-table:: Parameters
-    :widths: 25 10 10 30
-    :header-rows: 1
+        GET /products/16
+        Host: example.com
+        Accept: application/json
+  
 
-    * - Attribute
-      - Type
-      - Required
-      - Description
-    * - ``product_id``
-      - ``int``
-      - Yes
-      - The id of a product whose tags you'd like to view.
+  **Example response**:
 
-
-  .. admonition:: Status Codes
-
-    If a product hasn't been found, ``404`` status code is returned.
+    .. sourcecode:: http
+                
+        {
+      "category": "bottoms",
+      "description": "Stay feeling cool during hot Madison summers or when working out at the Nat with these loose Under Armour Wisconsin Qualifier Shorts that have an ultra-lightweight, stretchy woven fabric that delivers superior mobility. The Moisture Transport System wicks sweat and dries fast. There is an encased elastic waistband with an external drawcord, a notch at the hem which allows for better lateral movement and mesh hand pockets.",
+      "id": 16,
+      "image": "https://www.uwbookstore.com/storeimages/177-1554007-1_hi.png",
+      "name": "Wisconsin Qualifier Woven Short",
+      "price": 50
+        }
 
 .. http:post:: /products/
 
@@ -115,7 +157,212 @@ HTTP Endpoints
 
     This endpoint can return ``403`` or ``400`` status code.
 
-.. http:post:: /products/<product_id>/tag/<tag>
+  **Example request**:
+
+    .. sourcecode:: http
+
+        POST /products/
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+          
+          {
+        "name": "Red Pillow Case"
+        "category": "pillows"
+        "description": "A vibrant red pillowcase made from soft, breathable fabric. Smooth to the touch with a rich, bold hue that adds a pop of color and warmth to any bedding setup. Finished with clean stitching and a subtle sheen for a touch of elegance."
+        "image": "https://www.uwbookstore.com/storeimages/Red-Pillow-PNG-Image.png"
+        "price": "7.99"
+          }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "id": 33,
+      "message": "Product created!"
+        }
+
+.. http:put:: /products/<product_id>
+
+  Allows you to modify :ref:`product's information<Product Information>` (except ``product_id`` and ``user_id``).
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``product_id``
+      - ``int``
+      - Yes
+      - The id of a product you'd like to modify.
+
+  .. warning:: 
+
+    This endpoint requires authentification token provided in the ``Authorization`` header.
+
+  .. attention::
+
+    This endpoint requires admin status.
+
+  .. attention::
+    The request is successful only when the ``product_id`` is assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    This endpoint can return ``403``, ``404``, or ``400`` status code.
+  
+  **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /products/33
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+          
+          {
+        "price": "10.99"
+          }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "message": "Product updated!"
+        }
+
+.. http:delete:: /products/<product_id>/
+
+  Allows you to remove a product.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``product_id``
+      - ``int``
+      - Yes
+      - The id of a product you'd like to delete.
+
+  .. warning:: 
+
+    This endpoint requires authentification token provided in the ``Authorization`` header.
+
+  .. attention::
+
+    This endpoint requires admin status.
+
+  .. attention::
+    The request is successful only when the ``product_id`` is assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+    
+    This endpoint can return ``404`` or ``403`` status code.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /products/33
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "message": "Product deleted!"
+        }
+
+
+Product Tags
+############
+
+This module allows you to create and delete tags assigned to a product.
+
+Tag Information
+''''''''''''''''
+
+.. list-table:: 
+  :widths: 25 10 10 30
+  :header-rows: 1
+
+  * - Attribute
+    - Type
+    - Required
+    - Description
+  * - ``tag``
+    - ``str``
+    - Yes
+    - The name of the tag.
+  * - ``user_id``
+    - ``int``
+    - Yes
+    - The id of the currently logged in user is automatically assigned to the tag.
+
+
+Product Tags - HTTP Points
+''''''''''''''''''''''''''
+
+
+.. http:get:: /products/<product_id>/tags/
+
+  Allows you to view tags assigned to a product.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``product_id``
+      - ``int``
+      - Yes
+      - The id of a product whose tags you'd like to view.
+
+  .. attention::
+    The request is successful only when the ``product_id`` is assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    If a product hasn't been found, ``404`` status code is returned.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /products/33/tags
+        Host: example.com
+        Accept: application/json
+  
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "tags": [
+          "red",
+          "cotton",
+          "pillow",
+          ]
+        }
+
+.. http:post:: /products/<product_id>/tags/<tag>
 
   Allows you to add a new tag to a product.
 
@@ -144,70 +391,30 @@ HTTP Endpoints
 
     This endpoint requires admin status.
 
+  .. attention::
+    The request is successful only when the ``product_id`` is assigned to your ``user_id``.
+
   .. admonition:: Status Codes
 
     This endpoint can return ``403`` or ``404`` status code.
 
+  **Example request**:
 
-.. http:put:: /products/<product_id>
+    .. sourcecode:: http
 
-  Allows you to modify :ref:`product's information<Product Information>`.
+        POST /products/33/tags/pillowcase
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  .. list-table:: Parameters
-    :widths: 25 10 10 30
-    :header-rows: 1
 
-    * - Attribute
-      - Type
-      - Required
-      - Description
-    * - ``product_id``
-      - ``int``
-      - Yes
-      - The id of a product you'd like to modify.
+  **Example response**:
 
-  .. warning:: 
-
-    This endpoint requires authentification token provided in the ``Authorization`` header.
-
-  .. attention::
-
-    This endpoint requires admin status.
-
-  .. admonition:: Status Codes
-
-    This endpoint can return ``403``, ``404``, or ``400`` status code.
-  
-
-.. http:delete:: /products/<product_id>/
-
-  Allows you to remove a product.
-
-  .. list-table:: Parameters
-    :widths: 25 10 10 30
-    :header-rows: 1
-
-    * - Attribute
-      - Type
-      - Required
-      - Description
-    * - ``product_id``
-      - ``int``
-      - Yes
-      - The id of a product you'd like to delete.
-
-  .. warning:: 
-
-    This endpoint requires authentification token provided in the ``Authorization`` header.
-
-  .. attention::
-
-    This endpoint requires admin status.
-
-  .. admonition:: Status Codes
-    
-    This endpoint can return ``404`` or ``403`` status code.
-
+    .. sourcecode:: http
+                
+        {
+      "message": "Tag added!"
+        }
 
 .. http:delete:: /products/<product_id>/tags/<tag>
 
@@ -238,38 +445,347 @@ HTTP Endpoints
 
     This endpoint requires admin status.
 
+  .. attention::
+    The request is successful only when the ``product_id`` is assigned to your ``user_id``.
+
   .. admonition:: Status Codes
     
     This endpoint can return ``404`` or ``403`` status code.
 
+  **Example request**:
 
-**Example request**:
+    .. sourcecode:: http
 
-   .. sourcecode:: http
+        DELETE /products/33/tags/pillowcase
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-      GET /users/123/posts/web HTTP/1.1
-      Host: example.com
-      Accept: application/json, text/javascript
 
-**Example response**:
+  **Example response**:
 
-   .. sourcecode:: http
-
-      HTTP/1.1 200 OK
-      Vary: Accept
-      Content-Type: text/javascript
-
-      [
+    .. sourcecode:: http
+                
         {
-          "post_id": 12345,
-          "author_id": 123,
-          "tags": ["server", "web"],
-          "subject": "I tried Nginx"
-        },
-        {
-          "post_id": 12346,
-          "author_id": 123,
-          "tags": ["html5", "standards", "web"],
-          "subject": "We go to HTML 5"
+      "message": "Tag deleted!"
         }
-      ]
+
+
+Product Reviews
+###############
+
+This module allows you to create, view, search for, modify, and delete product reviews.
+
+Review Information
+''''''''''''''''''
+
+Each review can be assigned the following information:
+
+.. list-table::
+  :widths: 25 10 10 30
+  :header-rows: 1
+
+  * - Attribute
+    - Type
+    - Required
+    - Description
+  * - ``product_id``
+    - ``int``
+    - Yes
+    - The id of the reviewed product.
+  * - Title
+    - ``str``
+    - No
+    - The title of your review, e.g. "Perfect Jogging Shoes"
+  * - Stars
+    - ``float``
+    - No
+    - The amount of stars you want to award the product, e.g. 4.5.
+  * - Text
+    - ``str``
+    - No
+    - The content of your review. You can make it as long as you wish.
+  * - ``user_id``
+    - ``int``
+    - Yes
+    - The id of the currently logged in user is automatically assigned to the review.
+  
+.. note::
+  The default value of all attributes, except ``product_id`` and ``user_id``, is ``None``.
+
+Product Reviews - HTTP Endpoints
+''''''''''''''''''''''''''''''''
+
+.. http:get:: /products/<product_id>/reviews/
+
+  Allows you to view all reviews assigned to a product.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``product_id``
+      - ``int``
+      - Yes
+      - The id of a product whose reviews you'd like to view.
+
+  .. attention::
+    The request is successful only when the ``product_id`` is assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    If the product hasn't been found, ``404`` status code is returned.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /products/33/reviews
+        Host: example.com
+        Accept: application/json
+  
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "reviews": [
+          "Great quality for the price! The fabric feels soft and the color really brightens up my room.",
+          "Exactly what I was looking for—simple, bold, and comfortable. Would definitely buy again."
+          ]
+        }
+
+
+.. http:get:: /products/<product_id>/reviews/<review_id>
+
+  Allows you to search for review of a product.
+  If successful, the endpoint returns :ref:`the review's information<Review Information>`.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``product_id``
+      - ``int``
+      - Yes
+      - The id of a product whose review you'd like to view.
+    * - ``review_id``
+      - ``int``
+      - Yes
+      - The id the review you're looking for.
+
+  .. attention::  
+    The request is successful only when:
+      * both the ``product_id`` and ``review_id`` provided in the URL exist;
+      * the review you referenced is assigned the referenced product;
+      * the ``product_id`` and ``review_id`` are assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    If the product or the review hasn't been found, ``404`` status code is returned.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /products/33/reviews/1
+        Host: example.com
+        Accept: application/json
+        
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "id": 33
+      "title": "Soft, Stylish, and Budget-Friendly"
+      "stars": 4.0
+      "text": "Great quality for the price! The fabric feels soft and the color really brightens up my room."
+        }
+
+
+.. http:post:: /products/<product_id>/reviews/
+
+  Allows you to add a new review to a product. 
+  For each unique review, you can add :ref:`the following information<Review Information>`.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``product_id``
+      - ``int``
+      - Yes
+      - The id of a product to which you'd like to add a review.
+
+  .. warning:: 
+
+    This endpoint requires authentification token provided in the ``Authorization`` header.
+
+  .. attention::
+
+    This endpoint requires admin status.
+
+  .. attention::
+    The request is successful only when the ``product_id`` is assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    This endpoint can return ``404`` or ``403`` status code.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        POST /products/33/reviews
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+          
+          {
+        "id": 33,
+        "title": "Great Everyday Pillowcase",
+        "stars": 4.5,
+        "text": "Nice pop of color and fits my pillow perfectly. Not luxury, but great value for everyday use."
+          }        
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+          {
+        "id": 3,
+        "message": "Review added!"
+          } 
+
+
+.. http:put:: /products/<product_id>/reviews/<review_id>
+
+  Allows you to modify :ref:`a review's information<Review Information>` (except ``review_id``, ``product_id``, and ``user_id``).
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``product_id``
+      - ``int``
+      - Yes
+      - The id of a product that contains the review you'd like to modify.
+    * - ``review_id``
+      - ``int``
+      - Yes
+      - The id of the review you'd like to modify.
+
+  .. warning:: 
+
+    This endpoint requires authentification token provided in the ``Authorization`` header.
+
+  .. attention::
+
+    This endpoint requires admin status.
+
+  .. attention::  
+    The request is successful only when:
+      * both the ``product_id`` and ``review_id`` provided in the URL exist;
+      * the review you referenced is assigned the referenced product;
+      * the ``product_id`` and ``review_id`` are assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    This endpoint can return ``404`` or ``403`` status code. 
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /products/33/reviews/3
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+          
+          {
+        "stars": 4.0
+          }        
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+          {
+        "message": "Review updated!"
+          } 
+
+.. http:delete:: /products/<product_id>/reviews/<review_id>
+
+  Allows you to remove a review.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``product_id``
+      - ``int``
+      - Yes
+      - The id of a product whose review you'd like to delete.
+    * - ``review_id``
+      - ``int``
+      - Yes
+      - The id of the review you'd like to delete.
+
+  .. warning:: 
+
+    This endpoint requires authentification token provided in the ``Authorization`` header.
+
+  .. attention::
+
+    This endpoint requires admin status.
+
+  .. attention::  
+    The request is successful only when:
+      * both the ``product_id`` and ``review_id`` provided in the URL exist;
+      * the review you referenced is assigned the referenced product;
+      * the ``product_id`` and ``review_id`` are assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    This endpoint can return ``404`` or ``403`` status code.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /products/33/reviews/3
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+          {
+        "message": "Review deleted!"
+          } 

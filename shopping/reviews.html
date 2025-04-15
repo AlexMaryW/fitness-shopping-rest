@@ -160,7 +160,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../fitness/activities.html">Activities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fitness/foods.html">Foods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fitness/foodarchetypes.html">Food Archetypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fitness/meals.html">Meals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fitness/meals.html">Meals and Food Items</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Shopping</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
@@ -248,12 +248,17 @@
 <td><p>No</p></td>
 <td><p>The content of your review. You can make it as long as you wish.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the currently logged in user is automatically assigned to the review.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The default value of all attributes, except <code class="docutils literal notranslate"><span class="pre">product_id</span></code>, is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>The default value of all attributes, except <code class="docutils literal notranslate"><span class="pre">product_id</span></code> and <code class="docutils literal notranslate"><span class="pre">user_id</span></code>, is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </div>
 </section>
 <section id="http-endpoints">

@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Applications" href="applications.html" /><link rel="prev" title="Meals" href="../fitness/meals.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Application, Application States, Tags, Products, and Messages" href="applications.html" /><link rel="prev" title="Meals and Food Items" href="../fitness/meals.html" />
 
     <!-- Generated with Sphinx 5.1.1 and Furo 2023.03.27 -->
         <title>Shopping - Fitness Shopping REST API documentation</title>
@@ -158,17 +158,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">User Module</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../fitness/index.html">Fitness</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fitness/activities.html">Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fitness/foods.html">Foods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fitness/foodarchetypes.html">Food Archetypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fitness/meals.html">Meals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fitness/meals.html">Meals and Food Items</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Shopping</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications.html">Application, Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html">Categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="messages.html">Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="products.html">Products</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reviews.html">Reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tags.html">Tags</a></li>
 </ul>
 </li>
@@ -211,31 +208,53 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Shopping</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="applications.html">Applications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="applications.html#application-state">Application State</a></li>
-<li class="toctree-l2"><a class="reference internal" href="applications.html#http-endpoints">HTTP Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications.html">Application, Application States, Tags, Products, and Messages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="applications.html#application-and-application-states">Application and Application States</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="applications.html#application-state">Application State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="applications.html#application-and-application-states-http-endpoints">Application and Application States - HTTP Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="applications.html#application-tags">Application Tags</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="applications.html#application-tags-http-endpoints">Application Tags - HTTP Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="applications.html#application-cart">Application Cart</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="applications.html#cart-product-information">Cart Product Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="applications.html#application-cart-http-endpoints">Application Cart - HTTP Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="applications.html#application-messages">Application Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="applications.html#message-information">Message Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="applications.html#application-messages-http-endpoints">Application Messages - HTTP Endpoints</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-information">Category Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#http-endpoints">HTTP Endpoints</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="messages.html">Messages</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="messages.html#message-information">Message Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="messages.html#http-endpoints">HTTP Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products, Product Reviews, and Product Tags</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="products.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="products.html#product-information">Product Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="products.html#product-http-endpoints">Product - HTTP Endpoints</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="products.html#product-information">Product Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="products.html#http-endpoints">HTTP Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="products.html#product-tags">Product Tags</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="products.html#tag-information">Tag Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="products.html#product-tags-http-points">Product Tags - HTTP Points</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="reviews.html">Reviews</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reviews.html#review-information">Review Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reviews.html#http-endpoints">HTTP Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="products.html#product-reviews">Product Reviews</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="products.html#review-information">Review Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="products.html#product-reviews-http-endpoints">Product Reviews - HTTP Endpoints</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tags.html">Tags</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tags.html#tag-information">Tag Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tags.html#http-endpoints">HTTP Endpoints</a></li>
 </ul>
 </li>
@@ -253,7 +272,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Applications</div>
+                <div class="title">Application, Application States, Tags, Products, and Messages</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -264,7 +283,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Meals</div>
+                <div class="title">Meals and Food Items</div>
                 
               </div>
             </a>
