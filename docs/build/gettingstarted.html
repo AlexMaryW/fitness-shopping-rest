@@ -158,17 +158,14 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">User Module</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="fitness/index.html">Fitness</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="fitness/activities.html">Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fitness/foods.html">Foods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fitness/foodarchetypes.html">Food Archetypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fitness/meals.html">Meals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitness/meals.html">Meals and Food Items</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="shopping/index.html">Shopping</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Application, Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/categories.html">Categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shopping/messages.html">Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shopping/products.html">Products</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shopping/reviews.html">Reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shopping/products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/tags.html">Tags</a></li>
 </ul>
 </li>
@@ -338,6 +335,31 @@
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">401</span></code> or <code class="docutils literal notranslate"><span class="pre">404</span></code> status code.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /users/janedoe44
+Host: example.com
+Accept: application/json
+x-access-token: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>    {
+&quot;admin&quot;: false,
+&quot;firstName&quot;: &quot;jane&quot;,
+&quot;goalDailyActivity&quot;: 0,
+&quot;goalDailyCalories&quot;: 0,
+&quot;goalDailyCarbohydrates&quot;: 0,
+&quot;goalDailyFat&quot;: 0,
+&quot;goalDailyProtein&quot;: 0,
+&quot;lastName&quot;: &quot;doe&quot;,
+&quot;username&quot;: &quot;janedoe44&quot;
+    }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http post">
@@ -349,6 +371,29 @@ For each unique account, you can add <a class="reference internal" href="#user-i
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">400</span></code>, <code class="docutils literal notranslate"><span class="pre">409</span></code>, or <code class="docutils literal notranslate"><span class="pre">403</span></code> status code.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span>GET /users/
+Host: example.com
+Accept: application/json
+
+    {
+  &quot;username&quot;: &quot;janedoe44&quot;,
+  &quot;password&quot;: &quot;janedoe44&quot;,
+  &quot;firstName&quot;: &quot;jane&quot;,
+  &quot;lastName&quot;: &quot;doe&quot;
+    }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;User created!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http put">
@@ -392,6 +437,15 @@ For each unique account, you can add <a class="reference internal" href="#user-i
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">401</span></code> status code.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /users/janedoe44/
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http delete">
@@ -435,39 +489,55 @@ For each unique account, you can add <a class="reference internal" href="#user-i
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">401</span></code> status code.</p>
 </div>
-</dd></dl>
-
 <p><strong>Example request</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/users/123/posts/web</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">example.com</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json, text/javascript</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /users/janedoe44/
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Vary</span><span class="o">:</span> <span class="l">Accept</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
-
-<span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12345</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;server&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;I tried Nginx&quot;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12346</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;html5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;standards&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;We go to HTML 5&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">]</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;User deleted!&quot;
+  }
 </pre></div>
 </div>
 </div></blockquote>
+</dd></dl>
+
+</section>
+<section id="how-to-log-in">
+<h2>How to Log In<a class="headerlink" href="#how-to-log-in" title="Permalink to this heading">#</a></h2>
+<dl class="http get">
+<dt class="sig sig-object http" id="get--login-">
+<span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/login/</span></span><a class="headerlink" href="#get--login-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to obtain the authorization token using Basic Auth.</p>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">401</span></code> status code.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /login/
+Host: example.com
+Authorization: Basic amFuZWRvZTQ0OmphbmVkb2U0NA==
+Accept: application/json
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
 </section>
 </section>
 
@@ -529,6 +599,7 @@ For each unique account, you can add <a class="reference internal" href="#user-i
 <li><a class="reference internal" href="#">User Module</a><ul>
 <li><a class="reference internal" href="#user-information">User Information</a></li>
 <li><a class="reference internal" href="#http-endpoints">HTTP Endpoints</a></li>
+<li><a class="reference internal" href="#how-to-log-in">How to Log In</a></li>
 </ul>
 </li>
 </ul>

@@ -8,7 +8,5 @@ Shopping
 
    applications
    categories
-   messages
    products
-   reviews
    tags

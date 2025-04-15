@@ -1,10 +1,7 @@
 Activities
 ==========
 
-.. contents::
-
-
-This module allows you to create, view, search for, modify, and delete activities. 
+This module allows you to create, view, search for, modify, and delete activities assigned to your ``user_id``.
 
 .. warning::
   All endpoints in this module require authentification token provided in the ``Authorization`` header.
@@ -41,7 +38,7 @@ Each activity is assigned the following information:
   * - ``user_id``
     - ``int``
     - Yes
-    - The id of the currently logged in user is automatically assigned to the meal.
+    - The id of the currently logged in user is automatically assigned to the activity.
 
 
 HTTP Endpoints
@@ -49,8 +46,32 @@ HTTP Endpoints
 
 .. http:get:: /activities/
 
-  Allows you to view all activities assigned to your ``user id``.
+  Allows you to view all activities assigned to your ``user_id``.
 
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /activities/
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+  **Example response**:
+
+    .. sourcecode:: http
+
+        {
+      "activities": [
+        {
+          "calories": 150,
+          "date": "2025-04-14T07:02:33.728136",
+          "duration": 45,
+          "id": 5124,
+          "name": "jogging"
+        }
+          ]
+        }
 
 .. http:get:: /activities/<activity_id>
 
@@ -71,17 +92,64 @@ HTTP Endpoints
       - The id of an activity.
   
   .. attention::
-    The request is successful only when the ``activity_id`` is assigned to your ``user_id``.
+    The request is successful only when the ``activity_id`` in the URL is assigned to your ``user_id``.
 
   .. admonition:: Status Codes
 
     If the activity hasn't been found, ``404`` status code is returned.
 
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /activities/5124
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+
+  **Example response**:
+
+    .. sourcecode:: http
+
+        {
+      "calories": 250,
+      "date": "2025-04-14T07:02:33.728136",
+      "duration": 45,
+      "id": 5124,
+      "name": "jogging"
+        }
 
 .. http:post:: /activities/
 
   Allows you to add a new activity. 
   For each unique activity, you can add :ref:`the following information<Activity Information>`.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        POST /activities/
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+        {
+      "name": "jogging",
+      "duration": 45.0,
+      "calories": 150.0
+        }
+  
+
+  **Example response**:
+
+    .. sourcecode:: http
+
+          {
+      "id": 5124,
+      "message": "Activity created!"
+          }
+      
 
 .. http:put:: /activities/<activity_id>
 
@@ -101,11 +169,33 @@ HTTP Endpoints
       - The id of an activity you'd like to modify.
 
   .. attention::  
-    The request is successful only when the ``activity_id`` is assigned to your ``user_id``.
+    The request is successful only when the ``activity_id`` in the URL is assigned to your ``user_id``.
 
   .. admonition:: Status Codes
 
     If the activity hasn't been found, ``404`` status code is returned.    
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /activities/5124
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+        {
+      "duration": 60.0,
+        }
+  
+
+  **Example response**:
+
+    .. sourcecode:: http
+
+          {
+        "message": "Activity updated!"
+          }
 
 .. http:delete:: /activities/<activity_id>
 
@@ -125,39 +215,27 @@ HTTP Endpoints
       - The id of an activity that you'd like to delete.
 
   .. attention::  
-    The request is successful only when the ``activity_id`` is assigned to your ``user_id``.
+    The request is successful only when the ``activity_id`` in the URL is assigned to your ``user_id``.
 
   .. admonition:: Status Codes
 
     If the activity hasn't been found, ``404`` status code is returned. 
 
-**Example request**:
+  **Example request**:
 
-   .. sourcecode:: http
+    .. sourcecode:: http
 
-      GET /users/123/posts/web HTTP/1.1
-      Host: example.com
-      Accept: application/json, text/javascript
+        DELETE /activities/5124
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+  
 
-**Example response**:
+  **Example response**:
 
-   .. sourcecode:: http
+    .. sourcecode:: http
 
-      HTTP/1.1 200 OK
-      Vary: Accept
-      Content-Type: text/javascript
-
-      [
-        {
-          "post_id": 12345,
-          "author_id": 123,
-          "tags": ["server", "web"],
-          "subject": "I tried Nginx"
-        },
-        {
-          "post_id": 12346,
-          "author_id": 123,
-          "tags": ["html5", "standards", "web"],
-          "subject": "We go to HTML 5"
-        }
-      ]
+          {
+         "message": "Activity deleted!"
+          }

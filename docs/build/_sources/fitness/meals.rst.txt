@@ -1,9 +1,14 @@
+Meals and Food Items
+====================
+
 Meals
-=====
-This module allows you to create, view, search for, modify, and delete meals. A
+#####
+
+This module allows you to create, view, search for, modify, and delete meals.
+To each meal, you can add :ref:`food items<Food Items>`.
 
 .. warning::
-  All endpoints in this module require authentification token provided in the ``Authorization`` header.
+  All endpoints in these modules require authentification token provided in the ``Authorization`` header.
 
 Meal Information
 ''''''''''''''''
@@ -32,13 +37,40 @@ Each meal is assigned the following information:
     - The id of the currently logged in user is automatically assigned to the meal.
 
 
-HTTP Endpoints
+Meals Module - HTTP Endpoints
 ''''''''''''''
 
 .. http:get:: /meals/
 
   Allows you to view all meals assigned to your ``user id``.
 
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /meals
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  **Example response**:
+
+    .. sourcecode:: http
+        
+        {
+      "meals": [          
+          {
+              "date": "2025-04-14T07:54:40.345729",
+              "id": 2174,
+              "name": "bacon, eggs, and bagel"
+          },
+          {
+              "date": "2025-04-14T07:59:55.897241",
+              "id": 2175,
+              "name": "chicken, rice, and carrots"
+            }
+          ]
+        }
 
 .. http:get:: /meals/<meal_id>
 
@@ -65,11 +97,51 @@ HTTP Endpoints
 
     If the meal hasn't been found, ``404`` status code is returned.
 
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /meals/2174
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "date": "2025-04-14T07:54:40.345729",
+      "id": 2174,
+      "name": "bacon, eggs, and bagel"
+        } 
 
 .. http:post:: /meals/
 
   Allows you to add a new meal. 
   For each unique meal, the app will add :ref:`the following information<Meal Information>`.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        POST /meals
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+          {
+        "name": "bacon and eggs",
+          }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "id": 2174,
+      "message": "Meal created!"
+        }
 
 .. http:put:: /meals/<meal_id>
 
@@ -93,7 +165,29 @@ HTTP Endpoints
 
   .. admonition:: Status Codes
 
-    If the meal hasn't been found, ``404`` status code is returned.    
+    If the meal hasn't been found, ``404`` status code is returned.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /meals/2174
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+          {
+        "name": "bacon, eggs, and a bagel",
+          }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "id": 2174,
+      "message": "Meal updated!"
+        }    
 
 .. http:delete:: /meals/<meal_id>
 
@@ -118,34 +212,357 @@ HTTP Endpoints
   .. admonition:: Status Codes
 
     If the meal hasn't been found, ``404`` status code is returned. 
+  **Example request**:
 
-**Example request**:
+    .. sourcecode:: http
 
-   .. sourcecode:: http
+        DELETE /meals/2174
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-      GET /users/123/posts/web HTTP/1.1
-      Host: example.com
-      Accept: application/json, text/javascript
 
-**Example response**:
+  **Example response**:
 
-   .. sourcecode:: http
-
-      HTTP/1.1 200 OK
-      Vary: Accept
-      Content-Type: text/javascript
-
-      [
+    .. sourcecode:: http
+                
         {
-          "post_id": 12345,
-          "author_id": 123,
-          "tags": ["server", "web"],
-          "subject": "I tried Nginx"
-        },
-        {
-          "post_id": 12346,
-          "author_id": 123,
-          "tags": ["html5", "standards", "web"],
-          "subject": "We go to HTML 5"
+      "message": "Meal deleted!"
         }
-      ]
+
+Food Items
+##########
+
+This module allows you to create, view, search for, modify, and delete food items.
+
+.. warning::
+  All endpoints in these modules require authentification token provided in the ``Authorization`` header.
+
+Food Item Information
+'''''''''''''''''''''
+
+Each food item can be assigned the following information:
+
+.. list-table::
+  :widths: 25 10 10 30
+  :header-rows: 1
+
+  * - Attribute
+    - Type
+    - Required
+    - Description
+  * - Name
+    - ``str``
+    - No
+    - The food item's name, e.g. "carrot".
+  * - Measure
+    - ``str``
+    - No
+    - The food item's measure, e.g. grams or cup.
+  * - Calories
+    - ``float``
+    - No
+    - The amount of calories (kcal) in a food item.
+  * - Protein
+    - ``float``
+    - No
+    - The amount of protein in a food item, measured in grams.
+  * - Carbohydrates
+    - ``float``
+    - No
+    - The amount of carbohydrates in a food item, measured in grams.
+  * - Fat
+    - ``float``
+    - No
+    - The amount of fat in a food item, measured in grams.
+  * - ``user_id``
+    - ``int``
+    - Yes
+    - The id of the currently logged in user is automatically assigned to the food item.
+  
+.. note::
+  The default value of each attribute is ``None``.
+
+Food Items - HTTP Endpoints
+''''''''''''''
+
+.. http:get:: /meals/<meal_id>/foods/
+
+  Allows you to view all food items assigned to a meal.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``meal_id``
+      - ``int``
+      - Yes
+      - The id of a meal.
+  
+  .. attention::  
+    The request is successful only when the ``meal_id`` is assigned to your ``user_id``.
+  
+  .. admonition:: Status Codes
+
+    If the meal hasn't been found, ``404`` status code is returned.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /meals/2175/foods/
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+  
+
+  **Example response**:
+
+    .. sourcecode:: http
+
+      {
+      "foods": [
+          {
+              "calories": 25,
+              "carbohydrates": 6,
+              "fat": 0.1,
+              "id": 2451,
+              "name": "carrot",
+              "protein": 0.6
+          },
+          {
+              "calories": 165,
+              "carbohydrates": 0,
+              "fat": 3.6,
+              "id": 2452,
+              "name": "chicken breast",
+              "protein": 31
+          },
+          {
+              "calories": 206,
+              "carbohydrates": 45,
+              "fat": 0.4,
+              "id": 2453,
+              "name": "white rice",
+              "protein": 4.3
+          }
+        ]
+      }      
+
+.. http:get:: /meals/<meal_id>/foods/<food_id>
+
+  Allows you to search for a food item.
+  If successful, the endpoint returns :ref:`the food item's information<Food Item Information>`.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``meal_id``
+      - ``int``
+      - Yes
+      - The id of a meal.
+    * - ``food_id``
+      - ``int``
+      - Yes
+      - The id the food item you're looking for.
+  
+  .. attention::  
+    The request is successful only when:
+      * both the ``meal_id`` and ``food_id`` provided in the URL exist;
+      * the meal you referenced contains the referenced the food item;
+      * the ``meal_id`` and ``food_id`` are assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    If the meal or the food item hasn't been found, ``404`` status code is returned.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        GET /meals/2175/foods/2452
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+  
+
+  **Example response**:
+
+    .. sourcecode:: http
+
+        {
+      "calories": 165,
+      "carbohydrates": 0,
+      "fat": 3.6,
+      "id": 2452,
+      "name": "chicken breast",
+      "protein": 31
+        }
+                
+
+.. http:post:: /meals/<meal_id>/foods/
+
+  Allows you to add a new food item. 
+  For each unique food item, you can add :ref:`the following information<Food Item Information>`.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``meal_id``
+      - ``int``
+      - Yes
+      - The id of a meal.
+
+  .. attention::  
+    The request is successful only when the ``meal_id`` is assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    This endpoint can return ``404`` or ``400`` status code.
+ 
+  **Example request**:
+
+    .. sourcecode:: http
+
+        POST /meals/2175/foods
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+          {
+        "name": "carrot",
+        "measure": "cup",
+        "calories": 52.0,
+        "protein": 1.2,
+        "carbohydrates": 12.3,
+        "fat": 0.3
+          }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "id": 2451,
+      "message": "Food created!"
+        }
+
+.. http:put:: /meals/<meal_id>/foods/<food_id>
+
+  Allows you to modify :ref:`a food item's information<Food Item Information>` (except the ``user_id``).
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``meal_id``
+      - ``int``
+      - Yes
+      - The id of a meal that contains the food item you're looking for.
+    * - ``food_id``
+      - ``int``
+      - Yes
+      - The id the food item you're looking for.
+
+  .. attention::  
+    The request is successful only when:
+      * both the ``meal_id`` and ``food_id`` provided in the URL exist;
+      * the meal you referenced contains the referenced the food item;
+      * the ``meal_id`` and ``food_id`` are assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+
+    If the meal or the food item hasn't been found, ``404`` status code is returned.    
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        PUT /meals/2175/foods/2451
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+          {
+        "measure": "unit",
+        "calories": 25.0,
+        "protein": 0.6,
+        "carbohydrates": 6.0,
+        "fat": 0.1
+          }
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "message": "Food updated!"
+        }
+
+.. http:delete:: /meals/<meal_id>/foods/<food_id>
+
+  Allows you to remove a food item.
+
+  .. list-table:: Parameters
+    :widths: 25 10 10 30
+    :header-rows: 1
+
+    * - Attribute
+      - Type
+      - Required
+      - Description
+    * - ``meal_id``
+      - ``int``
+      - Yes
+      - The id of a meal that contains the food item you're looking for.
+    * - ``food_id``
+      - ``int``
+      - Yes
+      - The id of the food item you're looking for.
+
+  .. attention::  
+    The request is successful only when:
+      * both the ``meal_id`` and ``food_id`` provided in the URL exist;
+      * the meal you referenced contains the referenced the food item;
+      * the ``meal_id`` and ``food_id`` are assigned to your ``user_id``.
+
+  .. admonition:: Status Codes
+    
+    This endpoint can return ``404`` or ``400`` status code.
+
+  **Example request**:
+
+    .. sourcecode:: http
+
+        DELETE /meals/2175/foods/2452
+        Host: example.com
+        Accept: application/json
+        x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+        
+
+  **Example response**:
+
+    .. sourcecode:: http
+                
+        {
+      "message": "Food deleted!"
+        }
+        

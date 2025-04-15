@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Reviews" href="reviews.html" /><link rel="prev" title="Messages" href="messages.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Tags" href="tags.html" /><link rel="prev" title="Categories" href="categories.html" />
 
     <!-- Generated with Sphinx 5.1.1 and Furo 2023.03.27 -->
-        <title>Products - Fitness Shopping REST API documentation</title>
+        <title>Products, Product Reviews, and Product Tags - Fitness Shopping REST API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -158,17 +158,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">User Module</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../fitness/index.html">Fitness</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fitness/activities.html">Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fitness/foods.html">Foods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fitness/foodarchetypes.html">Food Archetypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fitness/meals.html">Meals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fitness/meals.html">Meals and Food Items</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Shopping</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications.html">Application, Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html">Categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="messages.html">Messages</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Products</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reviews.html">Reviews</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tags.html">Tags</a></li>
 </ul>
 </li>
@@ -206,12 +203,14 @@
           </label>
         </div>
         <article role="main">
-          <section id="products">
-<h1>Products<a class="headerlink" href="#products" title="Permalink to this heading">#</a></h1>
+          <section id="products-product-reviews-and-product-tags">
+<h1>Products, Product Reviews, and Product Tags<a class="headerlink" href="#products-product-reviews-and-product-tags" title="Permalink to this heading">#</a></h1>
+<section id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this heading">#</a></h2>
 <p>This module allows you to create, view, search for, modify, and delete products.
-It also allows you to create and delete tags assigned to a product.</p>
+To each product, you can assign <a class="reference internal" href="#product-tags"><span class="std std-ref">tags</span></a> and <a class="reference internal" href="#product-reviews"><span class="std std-ref">reviews</span></a>.</p>
 <section id="product-information">
-<h2>Product Information<a class="headerlink" href="#product-information" title="Permalink to this heading">#</a></h2>
+<h3>Product Information<a class="headerlink" href="#product-information" title="Permalink to this heading">#</a></h3>
 <p>Each product can be assigned the following information:</p>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
@@ -259,20 +258,58 @@ It also allows you to create and delete tags assigned to a product.</p>
 <td><p>No</p></td>
 <td><p>The product’s price, e.g. $25.99.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the currently logged in user is automatically assigned to the product.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The default value of each attribute is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>The default value of each attribute, except <code class="docutils literal notranslate"><span class="pre">user_id</span></code>, is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </div>
 </section>
-<section id="http-endpoints">
-<h2>HTTP Endpoints<a class="headerlink" href="#http-endpoints" title="Permalink to this heading">#</a></h2>
+<section id="product-http-endpoints">
+<h3>Product - HTTP Endpoints<a class="headerlink" href="#product-http-endpoints" title="Permalink to this heading">#</a></h3>
 <dl class="http get">
 <dt class="sig sig-object http" id="get--products-">
 <span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/products/</span></span><a class="headerlink" href="#get--products-" title="Permalink to this definition">#</a></dt>
 <dd><p>Allows you to view all products and <a class="reference internal" href="#product-information"><span class="std std-ref">their information</span></a>.</p>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /products
+Host: example.com
+Accept: application/json
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;products&quot;: [
+    {
+      &quot;category&quot;: &quot;plushes&quot;,
+      &quot;description&quot;: &quot;A perfect fuzzy, fluffy, Bucky Badger!&quot;,
+      &quot;id&quot;: 3,
+      &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-260250-2_hi.jpg&quot;,
+      &quot;name&quot;: &quot;Bucky Badger Plush&quot;,
+      &quot;price&quot;: 13
+    },
+    {
+      &quot;category&quot;: &quot;leggings&quot;,
+      &quot;description&quot;: &quot;Show off your Wisconsin spirit with these Bucky Badger leggings! These leggings feature a red spacedye detail down either side. They have a full color Bucky Badger on the left side and come complete with side pockets for your phone or other belongings. They&#39;re perfect for game day or wearing to the gym!&quot;,
+      &quot;id&quot;: 4,
+      &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-1532069-2_hi.jpg&quot;,
+      &quot;name&quot;: &quot;Wisconsin Leggings&quot;,
+      &quot;price&quot;: 50
+      }
+    ]
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http get">
@@ -305,19 +342,260 @@ If successful, the endpoint returns <a class="reference internal" href="#product
 </tbody>
 </table>
 </div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
 <div class="admonition-status-codes admonition">
 <p class="admonition-title">Status Codes</p>
 <p>If a product hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /products/16
+Host: example.com
+Accept: application/json
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;category&quot;: &quot;bottoms&quot;,
+&quot;description&quot;: &quot;Stay feeling cool during hot Madison summers or when working out at the Nat with these loose Under Armour Wisconsin Qualifier Shorts that have an ultra-lightweight, stretchy woven fabric that delivers superior mobility. The Moisture Transport System wicks sweat and dries fast. There is an encased elastic waistband with an external drawcord, a notch at the hem which allows for better lateral movement and mesh hand pockets.&quot;,
+&quot;id&quot;: 16,
+&quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-1554007-1_hi.png&quot;,
+&quot;name&quot;: &quot;Wisconsin Qualifier Woven Short&quot;,
+&quot;price&quot;: 50
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
+<dl class="http post">
+<dt class="sig sig-object http" id="post--products-">
+<span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/products/</span></span><a class="headerlink" href="#post--products-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to add a new product.
+For each unique product, you can add <a class="reference internal" href="#product-information"><span class="std std-ref">its information</span></a> as well as tags and review.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This endpoint requires authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This endpoint requires admin status.</p>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">403</span></code> or <code class="docutils literal notranslate"><span class="pre">400</span></code> status code.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>POST /products/
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;name&quot;: &quot;Red Pillow Case&quot;
+&quot;category&quot;: &quot;pillows&quot;
+&quot;description&quot;: &quot;A vibrant red pillowcase made from soft, breathable fabric. Smooth to the touch with a rich, bold hue that adds a pop of color and warmth to any bedding setup. Finished with clean stitching and a subtle sheen for a touch of elegance.&quot;
+&quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/Red-Pillow-PNG-Image.png&quot;
+&quot;price&quot;: &quot;7.99&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;id&quot;: 33,
+&quot;message&quot;: &quot;Product created!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http put">
+<dt class="sig sig-object http" id="put--products--product_id-">
+<span class="sig-name descname"><span class="pre">PUT</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;</span></span><a class="headerlink" href="#put--products--product_id-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to modify <a class="reference internal" href="#product-information"><span class="std std-ref">product’s information</span></a> (except <code class="docutils literal notranslate"><span class="pre">product_id</span></code> and <code class="docutils literal notranslate"><span class="pre">user_id</span></code>).</p>
+<div class="table-wrapper colwidths-given docutils container" id="id2">
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a product you’d like to modify.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This endpoint requires authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This endpoint requires admin status.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">403</span></code>, <code class="docutils literal notranslate"><span class="pre">404</span></code>, or <code class="docutils literal notranslate"><span class="pre">400</span></code> status code.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>PUT /products/33
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;price&quot;: &quot;10.99&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Product updated!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http delete">
+<dt class="sig sig-object http" id="delete--products--product_id--">
+<span class="sig-name descname"><span class="pre">DELETE</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/</span></span><a class="headerlink" href="#delete--products--product_id--" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to remove a product.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id3">
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a product you’d like to delete.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This endpoint requires authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This endpoint requires admin status.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">403</span></code> status code.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>PUT /products/33
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Product deleted!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</section>
+</section>
+<section id="product-tags">
+<h2>Product Tags<a class="headerlink" href="#product-tags" title="Permalink to this heading">#</a></h2>
+<p>This module allows you to create and delete tags assigned to a product.</p>
+<section id="tag-information">
+<h3>Tag Information<a class="headerlink" href="#tag-information" title="Permalink to this heading">#</a></h3>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tag</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The name of the tag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the currently logged in user is automatically assigned to the tag.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="product-tags-http-points">
+<h3>Product Tags - HTTP Points<a class="headerlink" href="#product-tags-http-points" title="Permalink to this heading">#</a></h3>
 <dl class="http get">
 <dt class="sig sig-object http" id="get--products--product_id--tags-">
 <span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/tags/</span></span><a class="headerlink" href="#get--products--product_id--tags-" title="Permalink to this definition">#</a></dt>
 <dd><p>Allows you to view tags assigned to a product.</p>
-<div class="table-wrapper colwidths-given docutils container" id="id2">
-<table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<div class="table-wrapper colwidths-given docutils container" id="id4">
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33.3%" />
 <col style="width: 13.3%" />
@@ -340,38 +618,43 @@ If successful, the endpoint returns <a class="reference internal" href="#product
 </tbody>
 </table>
 </div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
 <div class="admonition-status-codes admonition">
 <p class="admonition-title">Status Codes</p>
 <p>If a product hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /products/33/tags
+Host: example.com
+Accept: application/json
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;tags&quot;: [
+    &quot;red&quot;,
+    &quot;cotton&quot;,
+    &quot;pillow&quot;,
+    ]
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http post">
-<dt class="sig sig-object http" id="post--products-">
-<span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/products/</span></span><a class="headerlink" href="#post--products-" title="Permalink to this definition">#</a></dt>
-<dd><p>Allows you to add a new product.
-For each unique product, you can add <a class="reference internal" href="#product-information"><span class="std std-ref">its information</span></a> as well as tags and review.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This endpoint requires authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This endpoint requires admin status.</p>
-</div>
-<div class="admonition-status-codes admonition">
-<p class="admonition-title">Status Codes</p>
-<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">403</span></code> or <code class="docutils literal notranslate"><span class="pre">400</span></code> status code.</p>
-</div>
-</dd></dl>
-
-<dl class="http post">
-<dt class="sig sig-object http" id="post--products--product_id--tag--tag-">
-<span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/tag/&lt;tag&gt;</span></span><a class="headerlink" href="#post--products--product_id--tag--tag-" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object http" id="post--products--product_id--tags--tag-">
+<span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/tags/&lt;tag&gt;</span></span><a class="headerlink" href="#post--products--product_id--tags--tag-" title="Permalink to this definition">#</a></dt>
 <dd><p>Allows you to add a new tag to a product.</p>
-<div class="table-wrapper colwidths-given docutils container" id="id3">
-<table class="docutils align-default" id="id3">
-<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<div class="table-wrapper colwidths-given docutils container" id="id5">
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33.3%" />
 <col style="width: 13.3%" />
@@ -407,96 +690,31 @@ For each unique product, you can add <a class="reference internal" href="#produc
 <p class="admonition-title">Attention</p>
 <p>This endpoint requires admin status.</p>
 </div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
 <div class="admonition-status-codes admonition">
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">403</span></code> or <code class="docutils literal notranslate"><span class="pre">404</span></code> status code.</p>
 </div>
-</dd></dl>
-
-<dl class="http put">
-<dt class="sig sig-object http" id="put--products--product_id-">
-<span class="sig-name descname"><span class="pre">PUT</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;</span></span><a class="headerlink" href="#put--products--product_id-" title="Permalink to this definition">#</a></dt>
-<dd><p>Allows you to modify <a class="reference internal" href="#product-information"><span class="std std-ref">product’s information</span></a>.</p>
-<div class="table-wrapper colwidths-given docutils container" id="id4">
-<table class="docutils align-default" id="id4">
-<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33.3%" />
-<col style="width: 13.3%" />
-<col style="width: 13.3%" />
-<col style="width: 40.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Attribute</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Required</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p>The id of a product you’d like to modify.</p></td>
-</tr>
-</tbody>
-</table>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>POST /products/33/tags/pillowcase
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This endpoint requires authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Tag added!&quot;
+  }
+</pre></div>
 </div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This endpoint requires admin status.</p>
-</div>
-<div class="admonition-status-codes admonition">
-<p class="admonition-title">Status Codes</p>
-<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">403</span></code>, <code class="docutils literal notranslate"><span class="pre">404</span></code>, or <code class="docutils literal notranslate"><span class="pre">400</span></code> status code.</p>
-</div>
-</dd></dl>
-
-<dl class="http delete">
-<dt class="sig sig-object http" id="delete--products--product_id--">
-<span class="sig-name descname"><span class="pre">DELETE</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/</span></span><a class="headerlink" href="#delete--products--product_id--" title="Permalink to this definition">#</a></dt>
-<dd><p>Allows you to remove a product.</p>
-<div class="table-wrapper colwidths-given docutils container" id="id5">
-<table class="docutils align-default" id="id5">
-<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33.3%" />
-<col style="width: 13.3%" />
-<col style="width: 13.3%" />
-<col style="width: 40.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Attribute</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Required</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p>The id of a product you’d like to delete.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This endpoint requires authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This endpoint requires admin status.</p>
-</div>
-<div class="admonition-status-codes admonition">
-<p class="admonition-title">Status Codes</p>
-<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">403</span></code> status code.</p>
-</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http delete">
@@ -541,43 +759,451 @@ For each unique product, you can add <a class="reference internal" href="#produc
 <p class="admonition-title">Attention</p>
 <p>This endpoint requires admin status.</p>
 </div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
 <div class="admonition-status-codes admonition">
 <p class="admonition-title">Status Codes</p>
 <p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">403</span></code> status code.</p>
 </div>
-</dd></dl>
-
 <p><strong>Example request</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/users/123/posts/web</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">example.com</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json, text/javascript</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>DELETE /products/33/tags/pillowcase
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Vary</span><span class="o">:</span> <span class="l">Accept</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
-
-<span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12345</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;server&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;I tried Nginx&quot;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12346</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;html5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;standards&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;We go to HTML 5&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">]</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Tag deleted!&quot;
+  }
 </pre></div>
 </div>
 </div></blockquote>
+</dd></dl>
+
+</section>
+</section>
+<section id="product-reviews">
+<h2>Product Reviews<a class="headerlink" href="#product-reviews" title="Permalink to this heading">#</a></h2>
+<p>This module allows you to create, view, search for, modify, and delete product reviews.</p>
+<section id="review-information">
+<h3>Review Information<a class="headerlink" href="#review-information" title="Permalink to this heading">#</a></h3>
+<p>Each review can be assigned the following information:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the reviewed product.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Title</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>No</p></td>
+<td><p>The title of your review, e.g. “Perfect Jogging Shoes”</p></td>
+</tr>
+<tr class="row-even"><td><p>Stars</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>No</p></td>
+<td><p>The amount of stars you want to award the product, e.g. 4.5.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Text</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>No</p></td>
+<td><p>The content of your review. You can make it as long as you wish.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the currently logged in user is automatically assigned to the review.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default value of all attributes, except <code class="docutils literal notranslate"><span class="pre">product_id</span></code> and <code class="docutils literal notranslate"><span class="pre">user_id</span></code>, is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</div>
+</section>
+<section id="product-reviews-http-endpoints">
+<h3>Product Reviews - HTTP Endpoints<a class="headerlink" href="#product-reviews-http-endpoints" title="Permalink to this heading">#</a></h3>
+<dl class="http get">
+<dt class="sig sig-object http" id="get--products--product_id--reviews-">
+<span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/reviews/</span></span><a class="headerlink" href="#get--products--product_id--reviews-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to view all reviews assigned to a product.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id7">
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a product whose reviews you’d like to view.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>If the product hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /products/33/reviews
+Host: example.com
+Accept: application/json
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;reviews&quot;: [
+    &quot;Great quality for the price! The fabric feels soft and the color really brightens up my room.&quot;,
+    &quot;Exactly what I was looking for—simple, bold, and comfortable. Would definitely buy again.&quot;
+    ]
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http get">
+<dt class="sig sig-object http" id="get--products--product_id--reviews--review_id-">
+<span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/reviews/&lt;review_id&gt;</span></span><a class="headerlink" href="#get--products--product_id--reviews--review_id-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to search for review of a product.
+If successful, the endpoint returns <a class="reference internal" href="#review-information"><span class="std std-ref">the review’s information</span></a>.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id8">
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a product whose review you’d like to view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">review_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id the review you’re looking for.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<dl class="simple">
+<dt>The request is successful only when:</dt><dd><ul class="simple">
+<li><p>both the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> and <code class="docutils literal notranslate"><span class="pre">review_id</span></code> provided in the URL exist;</p></li>
+<li><p>the review you referenced is assigned the referenced product;</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> and <code class="docutils literal notranslate"><span class="pre">review_id</span></code> are assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>If the product or the review hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /products/33/reviews/1
+Host: example.com
+Accept: application/json
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;id&quot;: 33
+&quot;title&quot;: &quot;Soft, Stylish, and Budget-Friendly&quot;
+&quot;stars&quot;: 4.0
+&quot;text&quot;: &quot;Great quality for the price! The fabric feels soft and the color really brightens up my room.&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http post">
+<dt class="sig sig-object http" id="post--products--product_id--reviews-">
+<span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/reviews/</span></span><a class="headerlink" href="#post--products--product_id--reviews-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to add a new review to a product.
+For each unique review, you can add <a class="reference internal" href="#review-information"><span class="std std-ref">the following information</span></a>.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id9">
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a product to which you’d like to add a review.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This endpoint requires authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This endpoint requires admin status.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">403</span></code> status code.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>POST /products/33/reviews
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;id&quot;: 33,
+&quot;title&quot;: &quot;Great Everyday Pillowcase&quot;,
+&quot;stars&quot;: 4.5,
+&quot;text&quot;: &quot;Nice pop of color and fits my pillow perfectly. Not luxury, but great value for everyday use.&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;id&quot;: 3,
+&quot;message&quot;: &quot;Review added!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http put">
+<dt class="sig sig-object http" id="put--products--product_id--reviews--review_id-">
+<span class="sig-name descname"><span class="pre">PUT</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/reviews/&lt;review_id&gt;</span></span><a class="headerlink" href="#put--products--product_id--reviews--review_id-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to modify <a class="reference internal" href="#review-information"><span class="std std-ref">a review’s information</span></a> (except <code class="docutils literal notranslate"><span class="pre">review_id</span></code>, <code class="docutils literal notranslate"><span class="pre">product_id</span></code>, and <code class="docutils literal notranslate"><span class="pre">user_id</span></code>).</p>
+<div class="table-wrapper colwidths-given docutils container" id="id10">
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a product that contains the review you’d like to modify.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">review_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the review you’d like to modify.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This endpoint requires authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This endpoint requires admin status.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<dl class="simple">
+<dt>The request is successful only when:</dt><dd><ul class="simple">
+<li><p>both the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> and <code class="docutils literal notranslate"><span class="pre">review_id</span></code> provided in the URL exist;</p></li>
+<li><p>the review you referenced is assigned the referenced product;</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> and <code class="docutils literal notranslate"><span class="pre">review_id</span></code> are assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">403</span></code> status code.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>PUT /products/33/reviews/3
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;stars&quot;: 4.0
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Review updated!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http delete">
+<dt class="sig sig-object http" id="delete--products--product_id--reviews--review_id-">
+<span class="sig-name descname"><span class="pre">DELETE</span> </span><span class="sig-name descname"><span class="pre">/products/&lt;product_id&gt;/reviews/&lt;review_id&gt;</span></span><a class="headerlink" href="#delete--products--product_id--reviews--review_id-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to remove a review.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id11">
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a product whose review you’d like to delete.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">review_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the review you’d like to delete.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This endpoint requires authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This endpoint requires admin status.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<dl class="simple">
+<dt>The request is successful only when:</dt><dd><ul class="simple">
+<li><p>both the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> and <code class="docutils literal notranslate"><span class="pre">review_id</span></code> provided in the URL exist;</p></li>
+<li><p>the review you referenced is assigned the referenced product;</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">product_id</span></code> and <code class="docutils literal notranslate"><span class="pre">review_id</span></code> are assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">403</span></code> status code.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>PUT /products/33/reviews/3
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Review deleted!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</section>
 </section>
 </section>
 
@@ -586,23 +1212,23 @@ For each unique product, you can add <a class="reference internal" href="#produc
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="reviews.html">
+          <a class="next-page" href="tags.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Reviews</div>
+                <div class="title">Tags</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="messages.html">
+          <a class="prev-page" href="categories.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Messages</div>
+                <div class="title">Categories</div>
                 
               </div>
             </a>
@@ -636,9 +1262,22 @@ For each unique product, you can add <a class="reference internal" href="#produc
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Products</a><ul>
+<li><a class="reference internal" href="#">Products, Product Reviews, and Product Tags</a><ul>
+<li><a class="reference internal" href="#products">Products</a><ul>
 <li><a class="reference internal" href="#product-information">Product Information</a></li>
-<li><a class="reference internal" href="#http-endpoints">HTTP Endpoints</a></li>
+<li><a class="reference internal" href="#product-http-endpoints">Product - HTTP Endpoints</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#product-tags">Product Tags</a><ul>
+<li><a class="reference internal" href="#tag-information">Tag Information</a></li>
+<li><a class="reference internal" href="#product-tags-http-points">Product Tags - HTTP Points</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#product-reviews">Product Reviews</a><ul>
+<li><a class="reference internal" href="#review-information">Review Information</a></li>
+<li><a class="reference internal" href="#product-reviews-http-endpoints">Product Reviews - HTTP Endpoints</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

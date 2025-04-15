@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Shopping" href="../shopping/index.html" /><link rel="prev" title="Food Archetypes" href="foodarchetypes.html" />
 
     <!-- Generated with Sphinx 5.1.1 and Furo 2023.03.27 -->
-        <title>Meals - Fitness Shopping REST API documentation</title>
+        <title>Meals and Food Items - Fitness Shopping REST API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -158,17 +158,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">User Module</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Fitness</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="activities.html">Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="foods.html">Foods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="foodarchetypes.html">Food Archetypes</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Meals</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Meals and Food Items</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../shopping/index.html">Shopping</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Application, Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/categories.html">Categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/messages.html">Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/products.html">Products</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/reviews.html">Reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shopping/products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/tags.html">Tags</a></li>
 </ul>
 </li>
@@ -206,15 +203,18 @@
           </label>
         </div>
         <article role="main">
-          <section id="meals">
-<h1>Meals<a class="headerlink" href="#meals" title="Permalink to this heading">#</a></h1>
-<p>This module allows you to create, view, search for, modify, and delete meals. A</p>
+          <section id="meals-and-food-items">
+<h1>Meals and Food Items<a class="headerlink" href="#meals-and-food-items" title="Permalink to this heading">#</a></h1>
+<section id="meals">
+<h2>Meals<a class="headerlink" href="#meals" title="Permalink to this heading">#</a></h2>
+<p>This module allows you to create, view, search for, modify, and delete meals.
+To each meal, you can add <a class="reference internal" href="#food-items"><span class="std std-ref">food items</span></a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>All endpoints in this module require authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
+<p>All endpoints in these modules require authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
 </div>
 <section id="meal-information">
-<h2>Meal Information<a class="headerlink" href="#meal-information" title="Permalink to this heading">#</a></h2>
+<h3>Meal Information<a class="headerlink" href="#meal-information" title="Permalink to this heading">#</a></h3>
 <p>Each meal is assigned the following information:</p>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
@@ -251,12 +251,40 @@
 </table>
 </div>
 </section>
-<section id="http-endpoints">
-<h2>HTTP Endpoints<a class="headerlink" href="#http-endpoints" title="Permalink to this heading">#</a></h2>
+<section id="meals-module-http-endpoints">
+<h3>Meals Module - HTTP Endpoints<a class="headerlink" href="#meals-module-http-endpoints" title="Permalink to this heading">#</a></h3>
 <dl class="http get">
 <dt class="sig sig-object http" id="get--meals-">
 <span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/meals/</span></span><a class="headerlink" href="#get--meals-" title="Permalink to this definition">#</a></dt>
 <dd><p>Allows you to view all meals assigned to your <code class="docutils literal notranslate"><span class="pre">user</span> <span class="pre">id</span></code>.</p>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /meals
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;meals&quot;: [
+    {
+        &quot;date&quot;: &quot;2025-04-14T07:54:40.345729&quot;,
+        &quot;id&quot;: 2174,
+        &quot;name&quot;: &quot;bacon, eggs, and bagel&quot;
+    },
+    {
+        &quot;date&quot;: &quot;2025-04-14T07:59:55.897241&quot;,
+        &quot;id&quot;: 2175,
+        &quot;name&quot;: &quot;chicken, rice, and carrots&quot;
+      }
+    ]
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http get">
@@ -297,6 +325,25 @@ If successful, the endpoint returns the meal and <a class="reference internal" h
 <p class="admonition-title">Status Codes</p>
 <p>If the meal hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /meals/2174
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;date&quot;: &quot;2025-04-14T07:54:40.345729&quot;,
+&quot;id&quot;: 2174,
+&quot;name&quot;: &quot;bacon, eggs, and bagel&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http post">
@@ -304,6 +351,28 @@ If successful, the endpoint returns the meal and <a class="reference internal" h
 <span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/meals/</span></span><a class="headerlink" href="#post--meals-" title="Permalink to this definition">#</a></dt>
 <dd><p>Allows you to add a new meal.
 For each unique meal, the app will add <a class="reference internal" href="#meal-information"><span class="std std-ref">the following information</span></a>.</p>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>POST /meals
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;name&quot;: &quot;bacon and eggs&quot;,
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;id&quot;: 2174,
+&quot;message&quot;: &quot;Meal created!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http put">
@@ -343,6 +412,28 @@ For each unique meal, the app will add <a class="reference internal" href="#meal
 <p class="admonition-title">Status Codes</p>
 <p>If the meal hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>PUT /meals/2174
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;name&quot;: &quot;bacon, eggs, and a bagel&quot;,
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;id&quot;: 2174,
+&quot;message&quot;: &quot;Meal updated!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http delete">
@@ -382,39 +473,465 @@ For each unique meal, the app will add <a class="reference internal" href="#meal
 <p class="admonition-title">Status Codes</p>
 <p>If the meal hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
-</dd></dl>
-
 <p><strong>Example request</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/users/123/posts/web</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">example.com</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json, text/javascript</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>DELETE /meals/2174
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Vary</span><span class="o">:</span> <span class="l">Accept</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
-
-<span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12345</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;server&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;I tried Nginx&quot;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12346</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;html5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;standards&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;We go to HTML 5&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">]</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Meal deleted!&quot;
+  }
 </pre></div>
 </div>
 </div></blockquote>
+</dd></dl>
+
+</section>
+</section>
+<section id="food-items">
+<h2>Food Items<a class="headerlink" href="#food-items" title="Permalink to this heading">#</a></h2>
+<p>This module allows you to create, view, search for, modify, and delete food items.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All endpoints in these modules require authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
+</div>
+<section id="food-item-information">
+<h3>Food Item Information<a class="headerlink" href="#food-item-information" title="Permalink to this heading">#</a></h3>
+<p>Each food item can be assigned the following information:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>No</p></td>
+<td><p>The food item’s name, e.g. “carrot”.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>No</p></td>
+<td><p>The food item’s measure, e.g. grams or cup.</p></td>
+</tr>
+<tr class="row-even"><td><p>Calories</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>No</p></td>
+<td><p>The amount of calories (kcal) in a food item.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Protein</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>No</p></td>
+<td><p>The amount of protein in a food item, measured in grams.</p></td>
+</tr>
+<tr class="row-even"><td><p>Carbohydrates</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>No</p></td>
+<td><p>The amount of carbohydrates in a food item, measured in grams.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fat</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>No</p></td>
+<td><p>The amount of fat in a food item, measured in grams.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the currently logged in user is automatically assigned to the food item.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default value of each attribute is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</div>
+</section>
+<section id="food-items-http-endpoints">
+<h3>Food Items - HTTP Endpoints<a class="headerlink" href="#food-items-http-endpoints" title="Permalink to this heading">#</a></h3>
+<dl class="http get">
+<dt class="sig sig-object http" id="get--meals--meal_id--foods-">
+<span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/meals/&lt;meal_id&gt;/foods/</span></span><a class="headerlink" href="#get--meals--meal_id--foods-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to view all food items assigned to a meal.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id4">
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">meal_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a meal.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">meal_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>If the meal hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /meals/2175/foods/
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+&quot;foods&quot;: [
+    {
+        &quot;calories&quot;: 25,
+        &quot;carbohydrates&quot;: 6,
+        &quot;fat&quot;: 0.1,
+        &quot;id&quot;: 2451,
+        &quot;name&quot;: &quot;carrot&quot;,
+        &quot;protein&quot;: 0.6
+    },
+    {
+        &quot;calories&quot;: 165,
+        &quot;carbohydrates&quot;: 0,
+        &quot;fat&quot;: 3.6,
+        &quot;id&quot;: 2452,
+        &quot;name&quot;: &quot;chicken breast&quot;,
+        &quot;protein&quot;: 31
+    },
+    {
+        &quot;calories&quot;: 206,
+        &quot;carbohydrates&quot;: 45,
+        &quot;fat&quot;: 0.4,
+        &quot;id&quot;: 2453,
+        &quot;name&quot;: &quot;white rice&quot;,
+        &quot;protein&quot;: 4.3
+    }
+  ]
+}
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http get">
+<dt class="sig sig-object http" id="get--meals--meal_id--foods--food_id-">
+<span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/meals/&lt;meal_id&gt;/foods/&lt;food_id&gt;</span></span><a class="headerlink" href="#get--meals--meal_id--foods--food_id-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to search for a food item.
+If successful, the endpoint returns <a class="reference internal" href="#food-item-information"><span class="std std-ref">the food item’s information</span></a>.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id5">
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">meal_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a meal.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">food_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id the food item you’re looking for.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<dl class="simple">
+<dt>The request is successful only when:</dt><dd><ul class="simple">
+<li><p>both the <code class="docutils literal notranslate"><span class="pre">meal_id</span></code> and <code class="docutils literal notranslate"><span class="pre">food_id</span></code> provided in the URL exist;</p></li>
+<li><p>the meal you referenced contains the referenced the food item;</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">meal_id</span></code> and <code class="docutils literal notranslate"><span class="pre">food_id</span></code> are assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>If the meal or the food item hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /meals/2175/foods/2452
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;calories&quot;: 165,
+&quot;carbohydrates&quot;: 0,
+&quot;fat&quot;: 3.6,
+&quot;id&quot;: 2452,
+&quot;name&quot;: &quot;chicken breast&quot;,
+&quot;protein&quot;: 31
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http post">
+<dt class="sig sig-object http" id="post--meals--meal_id--foods-">
+<span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/meals/&lt;meal_id&gt;/foods/</span></span><a class="headerlink" href="#post--meals--meal_id--foods-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to add a new food item.
+For each unique food item, you can add <a class="reference internal" href="#food-item-information"><span class="std std-ref">the following information</span></a>.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id6">
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">meal_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a meal.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">meal_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">400</span></code> status code.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>POST /meals/2175/foods
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;name&quot;: &quot;carrot&quot;,
+&quot;measure&quot;: &quot;cup&quot;,
+&quot;calories&quot;: 52.0,
+&quot;protein&quot;: 1.2,
+&quot;carbohydrates&quot;: 12.3,
+&quot;fat&quot;: 0.3
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;id&quot;: 2451,
+&quot;message&quot;: &quot;Food created!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http put">
+<dt class="sig sig-object http" id="put--meals--meal_id--foods--food_id-">
+<span class="sig-name descname"><span class="pre">PUT</span> </span><span class="sig-name descname"><span class="pre">/meals/&lt;meal_id&gt;/foods/&lt;food_id&gt;</span></span><a class="headerlink" href="#put--meals--meal_id--foods--food_id-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to modify <a class="reference internal" href="#food-item-information"><span class="std std-ref">a food item’s information</span></a> (except the <code class="docutils literal notranslate"><span class="pre">user_id</span></code>).</p>
+<div class="table-wrapper colwidths-given docutils container" id="id7">
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">meal_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a meal that contains the food item you’re looking for.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">food_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id the food item you’re looking for.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<dl class="simple">
+<dt>The request is successful only when:</dt><dd><ul class="simple">
+<li><p>both the <code class="docutils literal notranslate"><span class="pre">meal_id</span></code> and <code class="docutils literal notranslate"><span class="pre">food_id</span></code> provided in the URL exist;</p></li>
+<li><p>the meal you referenced contains the referenced the food item;</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">meal_id</span></code> and <code class="docutils literal notranslate"><span class="pre">food_id</span></code> are assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>If the meal or the food item hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>PUT /meals/2175/foods/2451
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;measure&quot;: &quot;unit&quot;,
+&quot;calories&quot;: 25.0,
+&quot;protein&quot;: 0.6,
+&quot;carbohydrates&quot;: 6.0,
+&quot;fat&quot;: 0.1
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Food updated!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="http delete">
+<dt class="sig sig-object http" id="delete--meals--meal_id--foods--food_id-">
+<span class="sig-name descname"><span class="pre">DELETE</span> </span><span class="sig-name descname"><span class="pre">/meals/&lt;meal_id&gt;/foods/&lt;food_id&gt;</span></span><a class="headerlink" href="#delete--meals--meal_id--foods--food_id-" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows you to remove a food item.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id8">
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Parameters</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">meal_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of a meal that contains the food item you’re looking for.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">food_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The id of the food item you’re looking for.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<dl class="simple">
+<dt>The request is successful only when:</dt><dd><ul class="simple">
+<li><p>both the <code class="docutils literal notranslate"><span class="pre">meal_id</span></code> and <code class="docutils literal notranslate"><span class="pre">food_id</span></code> provided in the URL exist;</p></li>
+<li><p>the meal you referenced contains the referenced the food item;</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">meal_id</span></code> and <code class="docutils literal notranslate"><span class="pre">food_id</span></code> are assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This endpoint can return <code class="docutils literal notranslate"><span class="pre">404</span></code> or <code class="docutils literal notranslate"><span class="pre">400</span></code> status code.</p>
+</div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>DELETE /meals/2175/foods/2452
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Food deleted!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</section>
 </section>
 </section>
 
@@ -473,9 +990,17 @@ For each unique meal, the app will add <a class="reference internal" href="#meal
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Meals</a><ul>
+<li><a class="reference internal" href="#">Meals and Food Items</a><ul>
+<li><a class="reference internal" href="#meals">Meals</a><ul>
 <li><a class="reference internal" href="#meal-information">Meal Information</a></li>
-<li><a class="reference internal" href="#http-endpoints">HTTP Endpoints</a></li>
+<li><a class="reference internal" href="#meals-module-http-endpoints">Meals Module - HTTP Endpoints</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#food-items">Food Items</a><ul>
+<li><a class="reference internal" href="#food-item-information">Food Item Information</a></li>
+<li><a class="reference internal" href="#food-items-http-endpoints">Food Items - HTTP Endpoints</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

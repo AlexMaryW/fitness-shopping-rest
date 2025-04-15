@@ -7,6 +7,5 @@ Fitness
    :caption: Shopping
 
    activities
-   foods
    foodarchetypes
    meals

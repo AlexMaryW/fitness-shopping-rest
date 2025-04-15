@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Foods" href="foods.html" /><link rel="prev" title="Fitness" href="index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Food Archetypes" href="foodarchetypes.html" /><link rel="prev" title="Fitness" href="index.html" />
 
     <!-- Generated with Sphinx 5.1.1 and Furo 2023.03.27 -->
         <title>Activities - Fitness Shopping REST API documentation</title>
@@ -158,17 +158,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">User Module</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Fitness</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="foods.html">Foods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="foodarchetypes.html">Food Archetypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meals.html">Meals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meals.html">Meals and Food Items</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../shopping/index.html">Shopping</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Application, Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/categories.html">Categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/messages.html">Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/products.html">Products</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/reviews.html">Reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shopping/products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/tags.html">Tags</a></li>
 </ul>
 </li>
@@ -207,25 +204,14 @@
         </div>
         <article role="main">
           <section id="activities">
-<h1><a class="toc-backref" href="#id4" role="doc-backlink">Activities</a><a class="headerlink" href="#activities" title="Permalink to this heading">#</a></h1>
-<nav class="contents" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#activities" id="id4">Activities</a></p>
-<ul>
-<li><p><a class="reference internal" href="#activity-information" id="id5">Activity Information</a></p></li>
-<li><p><a class="reference internal" href="#http-endpoints" id="id6">HTTP Endpoints</a></p></li>
-</ul>
-</li>
-</ul>
-</nav>
-<p>This module allows you to create, view, search for, modify, and delete activities.</p>
+<h1>Activities<a class="headerlink" href="#activities" title="Permalink to this heading">#</a></h1>
+<p>This module allows you to create, view, search for, modify, and delete activities assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>All endpoints in this module require authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
 </div>
 <section id="activity-information">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Activity Information</a><a class="headerlink" href="#activity-information" title="Permalink to this heading">#</a></h2>
+<h2>Activity Information<a class="headerlink" href="#activity-information" title="Permalink to this heading">#</a></h2>
 <p>Each activity is assigned the following information:</p>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
@@ -266,18 +252,43 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
 <td><p>Yes</p></td>
-<td><p>The id of the currently logged in user is automatically assigned to the meal.</p></td>
+<td><p>The id of the currently logged in user is automatically assigned to the activity.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="http-endpoints">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">HTTP Endpoints</a><a class="headerlink" href="#http-endpoints" title="Permalink to this heading">#</a></h2>
+<h2>HTTP Endpoints<a class="headerlink" href="#http-endpoints" title="Permalink to this heading">#</a></h2>
 <dl class="http get">
 <dt class="sig sig-object http" id="get--activities-">
 <span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/activities/</span></span><a class="headerlink" href="#get--activities-" title="Permalink to this definition">#</a></dt>
-<dd><p>Allows you to view all activities assigned to your <code class="docutils literal notranslate"><span class="pre">user</span> <span class="pre">id</span></code>.</p>
+<dd><p>Allows you to view all activities assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /activities/
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;activities&quot;: [
+  {
+    &quot;calories&quot;: 150,
+    &quot;date&quot;: &quot;2025-04-14T07:02:33.728136&quot;,
+    &quot;duration&quot;: 45,
+    &quot;id&quot;: 5124,
+    &quot;name&quot;: &quot;jogging&quot;
+  }
+    ]
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http get">
@@ -312,12 +323,33 @@ If successful, the endpoint returns the activity and <a class="reference interna
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">activity_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">activity_id</span></code> in the URL is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
 </div>
 <div class="admonition-status-codes admonition">
 <p class="admonition-title">Status Codes</p>
 <p>If the activity hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /activities/5124
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;calories&quot;: 250,
+&quot;date&quot;: &quot;2025-04-14T07:02:33.728136&quot;,
+&quot;duration&quot;: 45,
+&quot;id&quot;: 5124,
+&quot;name&quot;: &quot;jogging&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http post">
@@ -325,6 +357,30 @@ If successful, the endpoint returns the activity and <a class="reference interna
 <span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/activities/</span></span><a class="headerlink" href="#post--activities-" title="Permalink to this definition">#</a></dt>
 <dd><p>Allows you to add a new activity.
 For each unique activity, you can add <a class="reference internal" href="#activity-information"><span class="std std-ref">the following information</span></a>.</p>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  POST /activities/
+  Host: example.com
+  Accept: application/json
+  x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;name&quot;: &quot;jogging&quot;,
+&quot;duration&quot;: 45.0,
+&quot;calories&quot;: 150.0
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>    {
+&quot;id&quot;: 5124,
+&quot;message&quot;: &quot;Activity created!&quot;
+    }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http put">
@@ -358,12 +414,33 @@ For each unique activity, you can add <a class="reference internal" href="#activ
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">activity_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">activity_id</span></code> in the URL is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
 </div>
 <div class="admonition-status-codes admonition">
 <p class="admonition-title">Status Codes</p>
 <p>If the activity hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
+<p><strong>Example request</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  PUT /activities/5124
+  Host: example.com
+  Accept: application/json
+  x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+
+  {
+&quot;duration&quot;: 60.0,
+  }
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
+&quot;message&quot;: &quot;Activity updated!&quot;
+  }
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="http delete">
@@ -397,45 +474,31 @@ For each unique activity, you can add <a class="reference internal" href="#activ
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">activity_id</span></code> is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
+<p>The request is successful only when the <code class="docutils literal notranslate"><span class="pre">activity_id</span></code> in the URL is assigned to your <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p>
 </div>
 <div class="admonition-status-codes admonition">
 <p class="admonition-title">Status Codes</p>
 <p>If the activity hasn’t been found, <code class="docutils literal notranslate"><span class="pre">404</span></code> status code is returned.</p>
 </div>
-</dd></dl>
-
 <p><strong>Example request</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/users/123/posts/web</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">example.com</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json, text/javascript</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>DELETE /activities/5124
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Vary</span><span class="o">:</span> <span class="l">Accept</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
-
-<span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12345</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;server&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;I tried Nginx&quot;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;post_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12346</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;author_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;html5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;standards&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;We go to HTML 5&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">]</span>
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span> {
+&quot;message&quot;: &quot;Activity deleted!&quot;
+ }
 </pre></div>
 </div>
 </div></blockquote>
+</dd></dl>
+
 </section>
 </section>
 
@@ -444,12 +507,12 @@ For each unique activity, you can add <a class="reference internal" href="#activ
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="foods.html">
+          <a class="next-page" href="foodarchetypes.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Foods</div>
+                <div class="title">Food Archetypes</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
