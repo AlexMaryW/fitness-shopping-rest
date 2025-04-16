@@ -57,20 +57,20 @@ Meals Module - HTTP Endpoints
 
     .. sourcecode:: http
         
-        {
-      "meals": [          
-          {
-              "date": "2025-04-14T07:54:40.345729",
-              "id": 2174,
-              "name": "bacon, eggs, and bagel"
-          },
-          {
-              "date": "2025-04-14T07:59:55.897241",
-              "id": 2175,
-              "name": "chicken, rice, and carrots"
-            }
+      {
+          "meals": [
+              {
+                  "date": "2025-04-14T07:54:40.345729",
+                  "id": 2174,
+                  "name": "bacon, eggs, and bagel"
+              },
+              {
+                  "date": "2025-04-14T07:59:55.897241",
+                  "id": 2175,
+                  "name": "chicken, rice, and carrots"
+              }
           ]
-        }
+      }
 
 .. http:get:: /meals/<meal_id>
 
@@ -110,11 +110,11 @@ Meals Module - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "date": "2025-04-14T07:54:40.345729",
-      "id": 2174,
-      "name": "bacon, eggs, and bagel"
-        } 
+      {
+          "date": "2025-04-14T07:54:40.345729",
+          "id": 2174,
+          "name": "bacon, eggs, and bagel"
+      } 
 
 .. http:post:: /meals/
 
@@ -130,18 +130,18 @@ Meals Module - HTTP Endpoints
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
         
-          {
-        "name": "bacon and eggs",
-          }
+        {
+            "name": "bacon and eggs",
+        }
 
   **Example response**:
 
     .. sourcecode:: http
                 
-        {
-      "id": 2174,
-      "message": "Meal created!"
-        }
+      {
+          "id": 2174,
+          "message": "Meal created!"
+      }
 
 .. http:put:: /meals/<meal_id>
 
@@ -176,18 +176,18 @@ Meals Module - HTTP Endpoints
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
         
-          {
-        "name": "bacon, eggs, and a bagel",
-          }
+        {
+            "name": "bacon, eggs, and a bagel",
+        }
 
   **Example response**:
 
     .. sourcecode:: http
                 
-        {
-      "id": 2174,
-      "message": "Meal updated!"
-        }    
+      {
+          "id": 2174,
+          "message": "Meal updated!"
+      }    
 
 .. http:delete:: /meals/<meal_id>
 
@@ -226,9 +226,9 @@ Meals Module - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "message": "Meal deleted!"
-        }
+      {
+          "message": "Meal deleted!"
+      }
 
 Food Items
 ##########
@@ -325,33 +325,33 @@ Food Items - HTTP Endpoints
     .. sourcecode:: http
 
       {
-      "foods": [
-          {
-              "calories": 25,
-              "carbohydrates": 6,
-              "fat": 0.1,
-              "id": 2451,
-              "name": "carrot",
-              "protein": 0.6
-          },
-          {
-              "calories": 165,
-              "carbohydrates": 0,
-              "fat": 3.6,
-              "id": 2452,
-              "name": "chicken breast",
-              "protein": 31
-          },
-          {
-              "calories": 206,
-              "carbohydrates": 45,
-              "fat": 0.4,
-              "id": 2453,
-              "name": "white rice",
-              "protein": 4.3
-          }
-        ]
-      }      
+          "foods": [
+              {
+                  "calories": 25,
+                  "carbohydrates": 6,
+                  "fat": 0.1,
+                  "id": 2451,
+                  "name": "carrot",
+                  "protein": 0.6
+              },
+              {
+                  "calories": 165,
+                  "carbohydrates": 0,
+                  "fat": 3.6,
+                  "id": 2452,
+                  "name": "chicken breast",
+                  "protein": 31
+              },
+              {
+                  "calories": 206,
+                  "carbohydrates": 45,
+                  "fat": 0.4,
+                  "id": 2453,
+                  "name": "white rice",
+                  "protein": 4.3
+              }
+          ]
+      }
 
 .. http:get:: /meals/<meal_id>/foods/<food_id>
 
@@ -399,14 +399,14 @@ Food Items - HTTP Endpoints
 
     .. sourcecode:: http
 
-        {
-      "calories": 165,
-      "carbohydrates": 0,
-      "fat": 3.6,
-      "id": 2452,
-      "name": "chicken breast",
-      "protein": 31
-        }
+      {
+          "calories": 165,
+          "carbohydrates": 0,
+          "fat": 3.6,
+          "id": 2452,
+          "name": "chicken breast",
+          "protein": 31
+      }
                 
 
 .. http:post:: /meals/<meal_id>/foods/
@@ -443,23 +443,23 @@ Food Items - HTTP Endpoints
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
         
-          {
-        "name": "carrot",
-        "measure": "cup",
-        "calories": 52.0,
-        "protein": 1.2,
-        "carbohydrates": 12.3,
-        "fat": 0.3
-          }
+        {
+            "name": "carrot",
+            "measure": "cup",
+            "calories": 52.0,
+            "protein": 1.2,
+            "carbohydrates": 12.3,
+            "fat": 0.3
+        }
 
   **Example response**:
 
     .. sourcecode:: http
                 
-        {
-      "id": 2451,
-      "message": "Food created!"
-        }
+      {
+          "id": 2451,
+          "message": "Food created!"
+      }
 
 .. http:put:: /meals/<meal_id>/foods/<food_id>
 
@@ -501,21 +501,21 @@ Food Items - HTTP Endpoints
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
         
-          {
-        "measure": "unit",
-        "calories": 25.0,
-        "protein": 0.6,
-        "carbohydrates": 6.0,
-        "fat": 0.1
-          }
+        {
+            "measure": "unit",
+            "calories": 25.0,
+            "protein": 0.6,
+            "carbohydrates": 6.0,
+            "fat": 0.1
+        }
 
   **Example response**:
 
     .. sourcecode:: http
                 
-        {
-      "message": "Food updated!"
-        }
+      {
+          "message": "Food updated!"
+      }
 
 .. http:delete:: /meals/<meal_id>/foods/<food_id>
 
@@ -562,7 +562,7 @@ Food Items - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "message": "Food deleted!"
-        }
+      {
+          "message": "Food deleted!"
+      }
         

@@ -163,7 +163,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Shopping</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="applications.html">Application, Application States, Tags, Products, and Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications.html">Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html">Categories</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tags.html">Tags</a></li>
@@ -287,26 +287,26 @@ Accept: application/json
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;products&quot;: [
-    {
-      &quot;category&quot;: &quot;plushes&quot;,
-      &quot;description&quot;: &quot;A perfect fuzzy, fluffy, Bucky Badger!&quot;,
-      &quot;id&quot;: 3,
-      &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-260250-2_hi.jpg&quot;,
-      &quot;name&quot;: &quot;Bucky Badger Plush&quot;,
-      &quot;price&quot;: 13
-    },
-    {
-      &quot;category&quot;: &quot;leggings&quot;,
-      &quot;description&quot;: &quot;Show off your Wisconsin spirit with these Bucky Badger leggings! These leggings feature a red spacedye detail down either side. They have a full color Bucky Badger on the left side and come complete with side pockets for your phone or other belongings. They&#39;re perfect for game day or wearing to the gym!&quot;,
-      &quot;id&quot;: 4,
-      &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-1532069-2_hi.jpg&quot;,
-      &quot;name&quot;: &quot;Wisconsin Leggings&quot;,
-      &quot;price&quot;: 50
-      }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;products&quot;: [
+        {
+            &quot;category&quot;: &quot;plushes&quot;,
+            &quot;description&quot;: &quot;A perfect fuzzy, fluffy, Bucky Badger!&quot;,
+            &quot;id&quot;: 3,
+            &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-260250-2_hi.jpg&quot;,
+            &quot;name&quot;: &quot;Bucky Badger Plush&quot;,
+            &quot;price&quot;: 13
+        },
+        {
+            &quot;category&quot;: &quot;leggings&quot;,
+            &quot;description&quot;: &quot;Show off your Wisconsin spirit with these Bucky Badger leggings! These leggings feature a red spacedye detail down either side. They have a full color Bucky Badger on the left side and come complete with side pockets for your phone or other belongings. They&#39;re perfect for game day or wearing to the gym!&quot;,
+            &quot;id&quot;: 4,
+            &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-1532069-2_hi.jpg&quot;,
+            &quot;name&quot;: &quot;Wisconsin Leggings&quot;,
+            &quot;price&quot;: 50
+        }
     ]
-  }
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -360,14 +360,14 @@ Accept: application/json
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;category&quot;: &quot;bottoms&quot;,
-&quot;description&quot;: &quot;Stay feeling cool during hot Madison summers or when working out at the Nat with these loose Under Armour Wisconsin Qualifier Shorts that have an ultra-lightweight, stretchy woven fabric that delivers superior mobility. The Moisture Transport System wicks sweat and dries fast. There is an encased elastic waistband with an external drawcord, a notch at the hem which allows for better lateral movement and mesh hand pockets.&quot;,
-&quot;id&quot;: 16,
-&quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-1554007-1_hi.png&quot;,
-&quot;name&quot;: &quot;Wisconsin Qualifier Woven Short&quot;,
-&quot;price&quot;: 50
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;category&quot;: &quot;bottoms&quot;,
+    &quot;description&quot;: &quot;Stay feeling cool during hot Madison summers or when working out at the Nat with these loose Under Armour Wisconsin Qualifier Shorts that have an ultra-lightweight, stretchy woven fabric that delivers superior mobility. The Moisture Transport System wicks sweat and dries fast. There is an encased elastic waistband with an external drawcord, a notch at the hem which allows for better lateral movement and mesh hand pockets.&quot;,
+    &quot;id&quot;: 16,
+    &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-1554007-1_hi.png&quot;,
+    &quot;name&quot;: &quot;Wisconsin Qualifier Woven Short&quot;,
+    &quot;price&quot;: 50
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -397,22 +397,22 @@ Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;name&quot;: &quot;Red Pillow Case&quot;
-&quot;category&quot;: &quot;pillows&quot;
-&quot;description&quot;: &quot;A vibrant red pillowcase made from soft, breathable fabric. Smooth to the touch with a rich, bold hue that adds a pop of color and warmth to any bedding setup. Finished with clean stitching and a subtle sheen for a touch of elegance.&quot;
-&quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/Red-Pillow-PNG-Image.png&quot;
-&quot;price&quot;: &quot;7.99&quot;
-  }
+{
+    &quot;name&quot;: &quot;Red Pillow Case&quot;,
+    &quot;category&quot;: &quot;pillows&quot;,
+    &quot;description&quot;: &quot;A vibrant red pillowcase made from soft, breathable fabric. Smooth to the touch with a rich, bold hue that adds a pop of color and warmth to any bedding setup. Finished with clean stitching and a subtle sheen for a touch of elegance.&quot;,
+    &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/Red-Pillow-PNG-Image.png&quot;,
+    &quot;price&quot;: &quot;7.99&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;id&quot;: 33,
-&quot;message&quot;: &quot;Product created!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;id&quot;: 33,
+    &quot;message&quot;: &quot;Product created!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -470,17 +470,17 @@ Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;price&quot;: &quot;10.99&quot;
-  }
+{
+    &quot;price&quot;: &quot;10.99&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Product updated!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Product updated!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -542,9 +542,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Product deleted!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Product deleted!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -636,13 +636,13 @@ Accept: application/json
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;tags&quot;: [
-    &quot;red&quot;,
-    &quot;cotton&quot;,
-    &quot;pillow&quot;,
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;tags&quot;: [
+        &quot;red&quot;,
+        &quot;cotton&quot;,
+        &quot;pillow&quot;,
     ]
-  }
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -709,9 +709,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Tag added!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Tag added!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -778,9 +778,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Tag deleted!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Tag deleted!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -892,12 +892,12 @@ Accept: application/json
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;reviews&quot;: [
-    &quot;Great quality for the price! The fabric feels soft and the color really brightens up my room.&quot;,
-    &quot;Exactly what I was looking for—simple, bold, and comfortable. Would definitely buy again.&quot;
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;reviews&quot;: [
+        &quot;Great quality for the price! The fabric feels soft and the color really brightens up my room.&quot;,
+        &quot;Exactly what I was looking for—simple, bold, and comfortable. Would definitely buy again.&quot;
     ]
-  }
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -963,12 +963,12 @@ Accept: application/json
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;id&quot;: 33
-&quot;title&quot;: &quot;Soft, Stylish, and Budget-Friendly&quot;
-&quot;stars&quot;: 4.0
-&quot;text&quot;: &quot;Great quality for the price! The fabric feels soft and the color really brightens up my room.&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;id&quot;: 33
+    &quot;title&quot;: &quot;Soft, Stylish, and Budget-Friendly&quot;
+    &quot;stars&quot;: 4.0
+    &quot;text&quot;: &quot;Great quality for the price! The fabric feels soft and the color really brightens up my room.&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -1027,21 +1027,21 @@ Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;id&quot;: 33,
-&quot;title&quot;: &quot;Great Everyday Pillowcase&quot;,
-&quot;stars&quot;: 4.5,
-&quot;text&quot;: &quot;Nice pop of color and fits my pillow perfectly. Not luxury, but great value for everyday use.&quot;
-  }
+{
+    &quot;id&quot;: 33,
+    &quot;title&quot;: &quot;Great Everyday Pillowcase&quot;,
+    &quot;stars&quot;: 4.5,
+    &quot;text&quot;: &quot;Nice pop of color and fits my pillow perfectly. Not luxury, but great value for everyday use.&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;id&quot;: 3,
-&quot;message&quot;: &quot;Review added!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;id&quot;: 3,
+    &quot;message&quot;: &quot;Review added!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -1111,17 +1111,17 @@ Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;stars&quot;: 4.0
-  }
+{
+    &quot;stars&quot;: 4.0
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Review updated!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Review updated!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -1195,9 +1195,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Review deleted!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Review deleted!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>

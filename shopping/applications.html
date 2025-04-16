@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Categories" href="categories.html" /><link rel="prev" title="Shopping" href="index.html" />
 
     <!-- Generated with Sphinx 5.1.1 and Furo 2023.03.27 -->
-        <title>Application, Application States, Tags, Products, and Messages - Fitness Shopping REST API documentation</title>
+        <title>Application States, Tags, Products, and Messages - Fitness Shopping REST API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -163,7 +163,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Shopping</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Application, Application States, Tags, Products, and Messages</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html">Categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tags.html">Tags</a></li>
@@ -203,11 +203,11 @@
           </label>
         </div>
         <article role="main">
-          <section id="application-application-states-tags-products-and-messages">
-<h1>Application, Application States, Tags, Products, and Messages<a class="headerlink" href="#application-application-states-tags-products-and-messages" title="Permalink to this heading">#</a></h1>
-<section id="application-and-application-states">
-<h2>Application and Application States<a class="headerlink" href="#application-and-application-states" title="Permalink to this heading">#</a></h2>
-<p>This module allows you to view application data and modify <a class="reference internal" href="#application-state"><span class="std std-ref">application’s state</span></a>.
+          <section id="application-states-tags-products-and-messages">
+<h1>Application States, Tags, Products, and Messages<a class="headerlink" href="#application-states-tags-products-and-messages" title="Permalink to this heading">#</a></h1>
+<section id="application-states">
+<h2>Application States<a class="headerlink" href="#application-states" title="Permalink to this heading">#</a></h2>
+<p>This module allows you to view application data and modify <span class="xref std std-ref">application’s state</span>.
 You can assgin <a class="reference internal" href="#application-tags"><span class="std std-ref">tags</span></a> and <a class="reference internal" href="#application-messages"><span class="std std-ref">messages</span></a> to your application, and manipulate <a class="reference internal" href="#application-cart"><span class="std std-ref">products in your cart</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -217,8 +217,8 @@ You can assgin <a class="reference internal" href="#application-tags"><span clas
 <p class="admonition-title">Warning</p>
 <p>All endpoints in this module require authentification token provided in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header.</p>
 </div>
-<section id="application-state">
-<h3>Application State<a class="headerlink" href="#application-state" title="Permalink to this heading">#</a></h3>
+<section id="application-states-information">
+<h3>Application States Information<a class="headerlink" href="#application-states-information" title="Permalink to this heading">#</a></h3>
 <p>Each user is assigned the following application state:</p>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
@@ -272,11 +272,11 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;back&quot;: false,
-&quot;dialogflowUpdated&quot;: false,
-&quot;page&quot;: &quot;home&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;back&quot;: false,
+    &quot;dialogflowUpdated&quot;: false,
+    &quot;page&quot;: &quot;home&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -285,23 +285,24 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 <dl class="http put">
 <dt class="sig sig-object http" id="put--application-">
 <span class="sig-name descname"><span class="pre">PUT</span> </span><span class="sig-name descname"><span class="pre">/application/</span></span><a class="headerlink" href="#put--application-" title="Permalink to this definition">#</a></dt>
-<dd><p>Allows you to modify your <a class="reference internal" href="#application-state"><span class="std std-ref">application state</span></a>.</p>
+<dd><p>Allows you to modify your <span class="xref std std-ref">application state</span>.</p>
 <p><strong>Example request</strong>:</p>
 <blockquote>
 <div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>GET /application
 Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+{
+    &quot;page&quot;: &quot;signUp&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;back&quot;: false,
-&quot;dialogflowUpdated&quot;: false,
-&quot;page&quot;: &quot;home&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Application state updated!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -329,13 +330,13 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;tags&quot;: [
-    &quot;women&quot;,
-    &quot;hoodies&quot;,
-    &quot;pillow&quot;
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;tags&quot;: [
+        &quot;women&quot;,
+        &quot;hoodies&quot;,
+        &quot;pillow&quot;
     ]
-  }
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -393,9 +394,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Tag added to application state!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Tag added to application state!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -420,9 +421,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;All tags removed from application state!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;All tags removed from application state!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -480,9 +481,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Tag removed from application state!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Tag removed from application state!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -556,28 +557,28 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>    {
-&quot;products&quot;: [
-    {
-        &quot;category&quot;: &quot;sweatshirts&quot;,
-        &quot;count&quot;: 1,
-        &quot;description&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
-        &quot;id&quot;: 2,
-        &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-843542-1_hi.jpg&quot;,
-        &quot;name&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
-        &quot;price&quot;: 40
-    },
-    {
-        &quot;category&quot;: &quot;sweatshirts&quot;,
-        &quot;count&quot;: 1,
-        &quot;description&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
-        &quot;id&quot;: 13,
-        &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-1567559-2_hi.png&quot;,
-        &quot;name&quot;: &quot;150 Year Commemorative Hoodie&quot;,
-        &quot;price&quot;: 90
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;products&quot;: [
+        {
+            &quot;category&quot;: &quot;sweatshirts&quot;,
+            &quot;count&quot;: 1,
+            &quot;description&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
+            &quot;id&quot;: 2,
+            &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-843542-1_hi.jpg&quot;,
+            &quot;name&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
+            &quot;price&quot;: 40
+        },
+        {
+            &quot;category&quot;: &quot;sweatshirts&quot;,
+            &quot;count&quot;: 1,
+            &quot;description&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
+            &quot;id&quot;: 13,
+            &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-1567559-2_hi.png&quot;,
+            &quot;name&quot;: &quot;150 Year Commemorative Hoodie&quot;,
+            &quot;price&quot;: 90
         }
-      ]
-    }
+    ]
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -632,15 +633,15 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>    {
-&quot;category&quot;: &quot;sweatshirts&quot;,
-&quot;count&quot;: 1,
-&quot;description&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
-&quot;id&quot;: 2,
-&quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-843542-1_hi.jpg&quot;,
-&quot;name&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
-&quot;price&quot;: 40
-    }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;category&quot;: &quot;sweatshirts&quot;,
+    &quot;count&quot;: 1,
+    &quot;description&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
+    &quot;id&quot;: 2,
+    &quot;image&quot;: &quot;https://www.uwbookstore.com/storeimages/177-843542-1_hi.jpg&quot;,
+    &quot;name&quot;: &quot;Bucky Crew Neck Sweatshirt&quot;,
+    &quot;price&quot;: 40
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -694,9 +695,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Product added to cart!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Product added to cart!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -717,9 +718,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Cart cleared!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Cart cleared!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -773,9 +774,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Product removed from cart!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Product removed from cart!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -854,22 +855,22 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>    {
-&quot;messages&quot;: [
-    {
-        &quot;date&quot;: &quot;2025-04-15T04:29:19.153564&quot;,
-        &quot;id&quot;: 34961,
-        &quot;isUser&quot;: false,
-        &quot;text&quot;: &quot;Do you have some red pillowcases in store?&quot;
-    },
-    {
-        &quot;date&quot;: &quot;2025-04-15T04:30:59.373200&quot;,
-        &quot;id&quot;: 34962,
-        &quot;isUser&quot;: false,
-        &quot;text&quot;: &quot;Do you sell used textbooks?&quot;
-    }
-      ]
-    }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;messages&quot;: [
+        {
+            &quot;date&quot;: &quot;2025-04-15T04:29:19.153564&quot;,
+            &quot;id&quot;: 34961,
+            &quot;isUser&quot;: false,
+            &quot;text&quot;: &quot;Do you have some red pillowcases in store?&quot;
+        },
+        {
+            &quot;date&quot;: &quot;2025-04-15T04:30:59.373200&quot;,
+            &quot;id&quot;: 34962,
+            &quot;isUser&quot;: false,
+            &quot;text&quot;: &quot;Do you sell used textbooks?&quot;
+        }
+    ]
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -947,19 +948,19 @@ Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-    {
-&quot;isUser&quot;: &quot;false&quot;,
-&quot;text&quot;: &quot;Do you have some red pillowcases in store?&quot;
-    }
+{
+    &quot;isUser&quot;: &quot;false&quot;,
+    &quot;text&quot;: &quot;Do you have some red pillowcases in store?&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;id&quot;: 34961,
-&quot;message&quot;: &quot;Message created!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;id&quot;: 34961,
+    &quot;message&quot;: &quot;Message created!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -980,9 +981,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;All messages removed from application state!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;All messages removed from application state!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -1036,9 +1037,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Message deleted!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Message deleted!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -1103,9 +1104,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Application, Application States, Tags, Products, and Messages</a><ul>
-<li><a class="reference internal" href="#application-and-application-states">Application and Application States</a><ul>
-<li><a class="reference internal" href="#application-state">Application State</a></li>
+<li><a class="reference internal" href="#">Application States, Tags, Products, and Messages</a><ul>
+<li><a class="reference internal" href="#application-states">Application States</a><ul>
+<li><a class="reference internal" href="#application-states-information">Application States Information</a></li>
 <li><a class="reference internal" href="#application-and-application-states-http-endpoints">Application and Application States - HTTP Endpoints</a></li>
 </ul>
 </li>

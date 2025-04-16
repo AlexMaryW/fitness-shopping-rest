@@ -4,7 +4,7 @@ Fitness
 
 ..  toctree::
    :maxdepth: 3
-   :caption: Shopping
+   :caption: Contents
 
    activities
    foodarchetypes

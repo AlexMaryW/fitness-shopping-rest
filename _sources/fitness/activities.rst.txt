@@ -61,17 +61,17 @@ HTTP Endpoints
 
     .. sourcecode:: http
 
-        {
-      "activities": [
-        {
-          "calories": 150,
-          "date": "2025-04-14T07:02:33.728136",
-          "duration": 45,
-          "id": 5124,
-          "name": "jogging"
-        }
+      {
+          "activities": [
+              {
+                  "calories": 150,
+                  "date": "2025-04-14T07:02:33.728136",
+                  "duration": 45,
+                  "id": 5124,
+                  "name": "jogging"
+              }
           ]
-        }
+      }
 
 .. http:get:: /activities/<activity_id>
 
@@ -112,13 +112,13 @@ HTTP Endpoints
 
     .. sourcecode:: http
 
-        {
-      "calories": 250,
-      "date": "2025-04-14T07:02:33.728136",
-      "duration": 45,
-      "id": 5124,
-      "name": "jogging"
-        }
+      {
+          "calories": 250,
+          "date": "2025-04-14T07:02:33.728136",
+          "duration": 45,
+          "id": 5124,
+          "name": "jogging"
+      }
 
 .. http:post:: /activities/
 
@@ -135,9 +135,9 @@ HTTP Endpoints
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
         
         {
-      "name": "jogging",
-      "duration": 45.0,
-      "calories": 150.0
+          "name": "jogging",
+          "duration": 45.0,
+          "calories": 150.0
         }
   
 
@@ -145,10 +145,10 @@ HTTP Endpoints
 
     .. sourcecode:: http
 
-          {
-      "id": 5124,
-      "message": "Activity created!"
-          }
+      {
+          "id": 5124,
+          "message": "Activity created!"
+      }
       
 
 .. http:put:: /activities/<activity_id>
@@ -185,7 +185,7 @@ HTTP Endpoints
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
         
         {
-      "duration": 60.0,
+          "duration": 60.0,
         }
   
 
@@ -193,9 +193,9 @@ HTTP Endpoints
 
     .. sourcecode:: http
 
-          {
-        "message": "Activity updated!"
-          }
+        {
+            "message": "Activity updated!"
+        }
 
 .. http:delete:: /activities/<activity_id>
 
@@ -236,6 +236,6 @@ HTTP Endpoints
 
     .. sourcecode:: http
 
-          {
-         "message": "Activity deleted!"
-          }
+      {
+          "message": "Activity deleted!"
+      }

@@ -45,19 +45,19 @@ HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "tags": [
-          "men",
-          "women",
-          "red",
-          "white",
-          "logo",
-          "printed",
-          "cotton",
-          "polyester",
-          "shortsleeve", 
+      {
+          "tags": [
+              "men",
+              "women",
+              "red",
+              "white",
+              "logo",
+              "printed",
+              "cotton",
+              "polyester",
+              "shortsleeve",
           ]
-        }
+      }
 
 
 .. http:post:: /tags/<tag>
@@ -106,9 +106,9 @@ HTTP Endpoints
 
     .. sourcecode:: http
           
-          {
-        "message": "Tag added!"
-          }
+      {
+          "message": "Tag added!"
+      }
           
 
 .. http:delete:: /tags/<tag>
@@ -157,6 +157,6 @@ HTTP Endpoints
 
     .. sourcecode:: http
         
-        {
-      "message": "Tag removed!"
-        }
+      {
+          "message": "Tag removed!"
+      }

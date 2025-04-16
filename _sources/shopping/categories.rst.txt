@@ -43,16 +43,16 @@ HTTP Endpoints
 
     .. sourcecode:: http
                 
-          {
-      "categories": [
-          "hats",
-          "sweatshirts",
-          "plushes",
-          "leggings",
-          "tees",
-          "bottoms"
+      {
+          "categories": [
+              "hats",
+              "sweatshirts",
+              "plushes",
+              "leggings",
+              "tees",
+              "bottoms"
           ]
-        }
+      }
       
 .. http:get:: /categories/<category>/tags/
 
@@ -90,12 +90,11 @@ HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "tags": [
-          "red"
+      {
+          "tags": [
+              "red"
           ]
-        }
-        
+      }
 
 .. http:post:: /categories/<category>
 
@@ -140,9 +139,9 @@ HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "message": "Category added!"
-        } 
+      {
+          "message": "Category added!"
+      } 
 
 .. http:delete:: /categories/<category>
 
@@ -186,6 +185,6 @@ HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "message": "Category removed!"
-        } 
+      {
+          "message": "Category removed!"
+      } 
