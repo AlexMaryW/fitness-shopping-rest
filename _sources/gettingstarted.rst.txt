@@ -36,23 +36,23 @@ Each user can be assigned the following information:
   * - ``GoalDailyCalories``
     - ``float``
     - No
-    - The amount of calories (kcal) you'd like to consume every day.
+    - The amount of calories (kcal) you'd like to consume every day. Defaults to ``0``.
   * - ``GoalDailyProtein``
     - ``float``
     - No
-    - The amount of protein you'd like to consume every day.
+    - The amount of protein you'd like to consume every day. Defaults to ``0``.
   * - ``GoalDailyCarbohydrates``
     - ``float``
     - No
-    - The amount of carbohydrates you'd like to consume every day.
+    - The amount of carbohydrates you'd like to consume every day. Defaults to ``0``.
   * - ``GoalDailyFat``
     - ``float``
     - No
-    - The amount of fat you'd like to consume every day.
+    - The amount of fat you'd like to consume every day. Defaults to ``0``.
   * - ``GoalDailyActivity``
     - ``float``
     - No
-    - The amount of time you'd like to dedicate to moving your body every day.
+    - The amount of time you'd like to dedicate to moving your body every day. Defaults to ``0``.
   
 .. note::
   The default value of optional attributes is ``None``.
@@ -117,17 +117,17 @@ HTTP Endpoints
 
     .. sourcecode:: http
 
-          {
-      "admin": false,
-      "firstName": "jane",
-      "goalDailyActivity": 0,
-      "goalDailyCalories": 0,
-      "goalDailyCarbohydrates": 0,
-      "goalDailyFat": 0,
-      "goalDailyProtein": 0,
-      "lastName": "doe",
-      "username": "janedoe44"
-          }
+      {
+          "admin": false,
+          "firstName": "jane",
+          "goalDailyActivity": 0,
+          "goalDailyCalories": 0,
+          "goalDailyCarbohydrates": 0,
+          "goalDailyFat": 0,
+          "goalDailyProtein": 0,
+          "lastName": "doe",
+          "username": "janedoe44"
+      }
       
 
 .. http:post:: /users/
@@ -148,20 +148,20 @@ HTTP Endpoints
       Host: example.com  
       Accept: application/json
 
-          {
-        "username": "janedoe44",
-        "password": "janedoe44",
-        "firstName": "jane",
-        "lastName": "doe"
-          }
+      {
+          "username": "janedoe44",
+          "password": "janedoe44",
+          "firstName": "jane",
+          "lastName": "doe"
+      }
 
   **Example response**:
 
     .. sourcecode:: http
                 
-        {
-      "message": "User created!"
-        }
+      {
+          "message": "User created!"
+      }
         
 .. http:put:: /users/<username>
 
@@ -247,9 +247,9 @@ HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "message": "User deleted!"
-        }
+      {
+          "message": "User deleted!"
+      }
 
 
 How to Log In
@@ -278,7 +278,7 @@ How to Log In
 
     .. sourcecode:: http
 
-          {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4"
-          }
+      {
+          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4"
+      }
 

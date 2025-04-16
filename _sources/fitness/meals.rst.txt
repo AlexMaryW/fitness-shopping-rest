@@ -25,8 +25,8 @@ Each meal is assigned the following information:
     - Description
   * - Name
     - ``str``
-    - Yes
-    - The meal's name, e.g. chicken broth.
+    - No
+    - The meal's name, e.g. chicken broth. Defaults to ``"New Meal"``.
   * - Date
     - ``str``
     - Yes
@@ -254,27 +254,23 @@ Each food item can be assigned the following information:
   * - Name
     - ``str``
     - No
-    - The food item's name, e.g. "carrot".
-  * - Measure
-    - ``str``
-    - No
-    - The food item's measure, e.g. grams or cup.
+    - The food item's name, e.g. "carrot". Deafults to ``"New Food"``.
   * - Calories
     - ``float``
     - No
-    - The amount of calories (kcal) in a food item.
+    - The amount of calories (kcal) in a food item. Defaults to ``0``.
   * - Protein
     - ``float``
     - No
-    - The amount of protein in a food item, measured in grams.
+    - The amount of protein in a food item, measured in grams. Defaults to ``0``.
   * - Carbohydrates
     - ``float``
     - No
-    - The amount of carbohydrates in a food item, measured in grams.
+    - The amount of carbohydrates in a food item, measured in grams. Defaults to ``0``.
   * - Fat
     - ``float``
     - No
-    - The amount of fat in a food item, measured in grams.
+    - The amount of fat in a food item, measured in grams. Defaults to ``0``.
   * - ``user_id``
     - ``int``
     - Yes
