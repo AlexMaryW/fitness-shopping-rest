@@ -20,7 +20,7 @@ The :ref:`Shopping module<Shopping>` allows you to to add and categorise product
 
 
 .. important::
-   Token-based authentication via BasicAuth is required for most HTTP endpoints. Tokens are provided upon successful login via the :ref:`User module<User module>`.
+   Token-based authentication via Basic Auth is required for most HTTP endpoints. Tokens are provided upon successful login via the :ref:`User module<User module>`.
 
 .. admonition:: Status Codes
 
