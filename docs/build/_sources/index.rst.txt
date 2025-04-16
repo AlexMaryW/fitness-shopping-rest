@@ -18,8 +18,7 @@ The :ref:`Fitness module<Fitness>` allows you to track physical activities, meal
 
 The :ref:`Shopping module<Shopping>` allows you to to add and categorise, write product reviews, and managing messages.
 
-.. note::
-   All requests and responses use the ``application/json`` format.
+
 
 .. important::
    API Base URL: ``https://example.com/api/``

@@ -23,7 +23,7 @@ Each product can be assigned the following information:
   * - Name
     - ``str``
     - No
-    - The product's name, e.g. "jeans".
+    - The product's name, e.g. "jeans". Defaults to ``"<New Product>"``.
   * - Category
     - ``str``
     - No
@@ -35,15 +35,15 @@ Each product can be assigned the following information:
   * - Description
     - ``str``
     - No
-    - Description of the product, e.g. "Straight black jeans"
+    - Description of the product, e.g. "Straight black jeans". Defaults to ``"<Product Description Text>"``.
   * - Image
     - ``str``
     - No
-    - URL to an image of the product.
+    - URL to an image of the product. Defaults to ``"https://via.placeholder.com/350"``.
   * - Price
     - ``float``
     - No
-    - The product's price, e.g. $25.99.
+    - The product's price, e.g. $25.99. Defaults to ``"5.0"``.
   * - ``user_id``
     - ``int``
     - Yes
@@ -504,7 +504,7 @@ Each review can be assigned the following information:
   * - Text
     - ``str``
     - No
-    - The content of your review. You can make it as long as you wish.
+    - The content of your review. You can make it as long as you wish. Defaults to ``"<Product Review Text>"``.
   * - ``user_id``
     - ``int``
     - Yes

@@ -243,8 +243,8 @@ You can assgin <a class="reference internal" href="#application-tags"><span clas
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dialogflowUpdated</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p>Whether the last update was from dialogflow (only used by GUI)</p></td>
+<td><p>No</p></td>
+<td><p>Whether the last update was from dialogflow (only used by GUI). Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">page</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
@@ -827,12 +827,12 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isUser</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p>Yes</p></td>
-<td><p>Designates whether the message was created by a human (<code class="docutils literal notranslate"><span class="pre">true</span></code>) or by an agent (<code class="docutils literal notranslate"><span class="pre">false</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
+<td><p>Designates whether the message was created by a human (<code class="docutils literal notranslate"><span class="pre">true</span></code>) or by an agent (<code class="docutils literal notranslate"><span class="pre">false</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
 <td><p>Yes</p></td>
-<td><p>The content of the message. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
+<td><p>The content of the message. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;&lt;Empty</span> <span class="pre">Message&gt;&quot;</span></code>.</p></td>
 </tr>
 </tbody>
 </table>

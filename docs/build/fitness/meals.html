@@ -234,8 +234,8 @@ To each meal, you can add <a class="reference internal" href="#food-items"><span
 <tbody>
 <tr class="row-even"><td><p>Name</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td><p>Yes</p></td>
-<td><p>The meal’s name, e.g. chicken broth.</p></td>
+<td><p>No</p></td>
+<td><p>The meal’s name, e.g. chicken broth. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;New</span> <span class="pre">Meal&quot;</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Date</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
@@ -523,34 +523,29 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 <tr class="row-even"><td><p>Name</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The food item’s name, e.g. “carrot”.</p></td>
+<td><p>The food item’s name, e.g. “carrot”. Deafults to <code class="docutils literal notranslate"><span class="pre">&quot;New</span> <span class="pre">Food&quot;</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Measure</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td><p>No</p></td>
-<td><p>The food item’s measure, e.g. grams or cup.</p></td>
-</tr>
-<tr class="row-even"><td><p>Calories</p></td>
+<tr class="row-odd"><td><p>Calories</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The amount of calories (kcal) in a food item.</p></td>
+<td><p>The amount of calories (kcal) in a food item. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Protein</p></td>
+<tr class="row-even"><td><p>Protein</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The amount of protein in a food item, measured in grams.</p></td>
+<td><p>The amount of protein in a food item, measured in grams. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>Carbohydrates</p></td>
+<tr class="row-odd"><td><p>Carbohydrates</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The amount of carbohydrates in a food item, measured in grams.</p></td>
+<td><p>The amount of carbohydrates in a food item, measured in grams. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Fat</p></td>
+<tr class="row-even"><td><p>Fat</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The amount of fat in a food item, measured in grams.</p></td>
+<td><p>The amount of fat in a food item, measured in grams. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
 <td><p>Yes</p></td>
 <td><p>The id of the currently logged in user is automatically assigned to the food item.</p></td>

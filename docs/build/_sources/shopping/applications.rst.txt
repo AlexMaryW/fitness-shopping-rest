@@ -29,11 +29,11 @@ Each user is assigned the following application state:
   * - ``back``
     - ``Boolean``
     - Yes
-    -  Whether the page should go back
+    - Whether the page should go back
   * - ``dialogflowUpdated``
     - ``Boolean``
-    - Yes
-    - Whether the last update was from dialogflow (only used by GUI)
+    - No
+    - Whether the last update was from dialogflow (only used by GUI). Defaults to ``False``.
   * - ``page``
     - ``str``
     - Yes
@@ -515,11 +515,11 @@ Each message is assigned the following information:
   * - ``isUser``
     - ``bool``
     - Yes
-    - Designates whether the message was created by a human (``true``) or by an agent (``false``). Defaults to ``None``.
+    - Designates whether the message was created by a human (``true``) or by an agent (``false``). Defaults to ``False``.
   * - ``text``
     - ``str``
     - Yes
-    - The content of the message. Defaults to ``None``.
+    - The content of the message. Defaults to ``"<Empty Message>"``.
 
 Application Messages - HTTP Endpoints
 ''''''''''''''

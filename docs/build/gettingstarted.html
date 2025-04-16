@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Fitness" href="fitness/index.html" /><link rel="prev" title="Welcome to Fitness Shopping REST API’s documentation!" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Fitness" href="fitness/index.html" /><link rel="prev" title="Fitness Shopping REST API’s Documentation" href="index.html" />
 
     <!-- Generated with Sphinx 5.1.1 and Furo 2023.03.27 -->
         <title>User Module - Fitness Shopping REST API documentation</title>
@@ -163,7 +163,7 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="shopping/index.html">Shopping</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Application, Application States, Tags, Products, and Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/categories.html">Categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/tags.html">Tags</a></li>
@@ -248,27 +248,27 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GoalDailyCalories</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The amount of calories (kcal) you’d like to consume every day.</p></td>
+<td><p>The amount of calories (kcal) you’d like to consume every day. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GoalDailyProtein</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The amount of protein you’d like to consume every day.</p></td>
+<td><p>The amount of protein you’d like to consume every day. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GoalDailyCarbohydrates</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The amount of carbohydrates you’d like to consume every day.</p></td>
+<td><p>The amount of carbohydrates you’d like to consume every day. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GoalDailyFat</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The amount of fat you’d like to consume every day.</p></td>
+<td><p>The amount of fat you’d like to consume every day. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GoalDailyActivity</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>No</p></td>
-<td><p>The amount of time you’d like to dedicate to moving your body every day.</p></td>
+<td><p>The amount of time you’d like to dedicate to moving your body every day. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -346,17 +346,17 @@ x-access-token: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imphb
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>    {
-&quot;admin&quot;: false,
-&quot;firstName&quot;: &quot;jane&quot;,
-&quot;goalDailyActivity&quot;: 0,
-&quot;goalDailyCalories&quot;: 0,
-&quot;goalDailyCarbohydrates&quot;: 0,
-&quot;goalDailyFat&quot;: 0,
-&quot;goalDailyProtein&quot;: 0,
-&quot;lastName&quot;: &quot;doe&quot;,
-&quot;username&quot;: &quot;janedoe44&quot;
-    }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;admin&quot;: false,
+    &quot;firstName&quot;: &quot;jane&quot;,
+    &quot;goalDailyActivity&quot;: 0,
+    &quot;goalDailyCalories&quot;: 0,
+    &quot;goalDailyCarbohydrates&quot;: 0,
+    &quot;goalDailyFat&quot;: 0,
+    &quot;goalDailyProtein&quot;: 0,
+    &quot;lastName&quot;: &quot;doe&quot;,
+    &quot;username&quot;: &quot;janedoe44&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -377,20 +377,20 @@ For each unique account, you can add <a class="reference internal" href="#user-i
 Host: example.com
 Accept: application/json
 
-    {
-  &quot;username&quot;: &quot;janedoe44&quot;,
-  &quot;password&quot;: &quot;janedoe44&quot;,
-  &quot;firstName&quot;: &quot;jane&quot;,
-  &quot;lastName&quot;: &quot;doe&quot;
-    }
+{
+    &quot;username&quot;: &quot;janedoe44&quot;,
+    &quot;password&quot;: &quot;janedoe44&quot;,
+    &quot;firstName&quot;: &quot;jane&quot;,
+    &quot;lastName&quot;: &quot;doe&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;User created!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;User created!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -500,9 +500,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;User deleted!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;User deleted!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -530,9 +530,9 @@ Accept: application/json
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>

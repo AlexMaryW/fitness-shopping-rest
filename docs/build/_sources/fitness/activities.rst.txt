@@ -21,20 +21,20 @@ Each activity is assigned the following information:
     - Description
   * - Name
     - ``str``
-    - Yes
-    - The activity's name, e.g. yoga.
+    - No
+    - The activity's name, e.g. yoga. Defaults to ``"New Activity"``.
   * - Duration
     - ``float``
-    - Yes
-    - The duration of an activity in minutes, e.g. 30.00 minutes.
+    - No
+    - The duration of an activity in minutes, e.g. 30.00 minutes. Defaults to ``0``.
   * - Date
     - ``str``
     - Yes
     - The date an activity was created on. Defaults to today's date.
   * - Calories
     - ``float``
-    - Yes
-    - The amount of calories (kcal) burnt during an activity, e.g. 100.00 calories.
+    - No
+    - The amount of calories (kcal) burnt during an activity, e.g. 100.00 calories. Defaults to ``0``.
   * - ``user_id``
     - ``int``
     - Yes

@@ -22,27 +22,27 @@ Each food archetype can be assigned the following information:
   * - Name
     - ``str``
     - No
-    - The food archetype's name, e.g. "carrot".
+    - The food archetype's name, e.g. "carrot". Defaults to ``"New Food"``.
   * - Measure
     - ``str``
     - No
-    - The food archetype's measure, e.g. grams or cup.
+    - The food archetype's measure, e.g. grams or cup. Defaults to ``"unit"``.
   * - Calories
     - ``float``
     - No
-    - The amount of calories (kcal) in a food archetype.
+    - The amount of calories (kcal) in a food archetype. Defaults to ``0``.
   * - Protein
     - ``float``
     - No
-    - The amount of protein in a food archetype, measured in grams.
+    - The amount of protein in a food archetype, measured in grams. Defaults to ``0``.
   * - Carbohydrates
     - ``float``
     - No
-    - The amount of carbohydrates in a food archetype, measured in grams.
+    - The amount of carbohydrates in a food archetype, measured in grams. Defaults to ``0``.
   * - Fat
     - ``float``
     - No
-    - The amount of fat in a food archetype, measured in grams.
+    - The amount of fat in a food archetype, measured in grams. Defaults to ``0``.
   * - ``user_id``
     - ``int``
     - Yes
