@@ -1,7 +1,7 @@
-Application, Application States, Tags, Products, and Messages
+Application States, Tags, Products, and Messages
 ============
 
-Application and Application States
+Application States
 ##################################
 
 This module allows you to view application data and modify :ref:`application's state<Application State>`.
@@ -13,8 +13,8 @@ You can assgin :ref:`tags<Application Tags>` and :ref:`messages<Application Mess
 .. warning::
   All endpoints in this module require authentification token provided in the ``Authorization`` header.
 
-Application State
-'''''''''''''''''
+Application States Information
+'''''''''''''''''''''''''''''''
 
 Each user is assigned the following application state:
 
@@ -61,11 +61,11 @@ Application and Application States - HTTP Endpoints
 
     .. sourcecode:: http
                   
-        {
-      "back": false,
-      "dialogflowUpdated": false,
-      "page": "home"
-        }
+      {
+          "back": false,
+          "dialogflowUpdated": false,
+          "page": "home"
+      }
         
 
 .. http:put:: /application/
@@ -80,17 +80,18 @@ Application and Application States - HTTP Endpoints
         Host: example.com
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
-        
+        {
+            "page": "signUp"
+        }     
+
 
   **Example response**:
 
     .. sourcecode:: http
                 
-        {
-      "back": false,
-      "dialogflowUpdated": false,
-      "page": "home"
-        }
+      {
+          "message": "Application state updated!"
+      }
           
 
 Application Tags
@@ -119,13 +120,13 @@ Application Tags - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "tags": [
-          "women",
-          "hoodies",
-          "pillow"
+      {
+          "tags": [
+              "women",
+              "hoodies",
+              "pillow"
           ]
-        }
+      }
 
   .. warning::
     This endpoint requires authentification token provided in the ``Authorization`` header.
@@ -168,9 +169,9 @@ Application Tags - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "message": "Tag added to application state!"
-        }
+      {
+          "message": "Tag added to application state!"
+      }
         
 
 .. http:delete:: /application/tags/
@@ -194,9 +195,9 @@ Application Tags - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "message": "All tags removed from application state!"
-        }
+      {
+          "message": "All tags removed from application state!"
+      }
 
 .. http:delete:: /application/tags/<tag>
 
@@ -239,9 +240,9 @@ Application Tags - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "message": "Tag removed from application state!"
-        }
+      {
+          "message": "Tag removed from application state!"
+      }
 
 Application Cart
 ################
@@ -300,28 +301,28 @@ Application Cart - HTTP Endpoints
 
     .. sourcecode:: http
                   
-          {
-      "products": [
-          {
-              "category": "sweatshirts",
-              "count": 1,
-              "description": "Bucky Crew Neck Sweatshirt",
-              "id": 2,
-              "image": "https://www.uwbookstore.com/storeimages/177-843542-1_hi.jpg",
-              "name": "Bucky Crew Neck Sweatshirt",
-              "price": 40
-          },
-          {
-              "category": "sweatshirts",
-              "count": 1,
-              "description": "Bucky Crew Neck Sweatshirt",
-              "id": 13,
-              "image": "https://www.uwbookstore.com/storeimages/177-1567559-2_hi.png",
-              "name": "150 Year Commemorative Hoodie",
-              "price": 90
+      {
+          "products": [
+              {
+                  "category": "sweatshirts",
+                  "count": 1,
+                  "description": "Bucky Crew Neck Sweatshirt",
+                  "id": 2,
+                  "image": "https://www.uwbookstore.com/storeimages/177-843542-1_hi.jpg",
+                  "name": "Bucky Crew Neck Sweatshirt",
+                  "price": 40
+              },
+              {
+                  "category": "sweatshirts",
+                  "count": 1,
+                  "description": "Bucky Crew Neck Sweatshirt",
+                  "id": 13,
+                  "image": "https://www.uwbookstore.com/storeimages/177-1567559-2_hi.png",
+                  "name": "150 Year Commemorative Hoodie",
+                  "price": 90
               }
-            ]
-          }
+          ]
+      }
 
 .. http:get:: /application/products/<product_id>
 
@@ -362,15 +363,15 @@ Application Cart - HTTP Endpoints
 
     .. sourcecode:: http
                   
-          {
-      "category": "sweatshirts",
-      "count": 1,
-      "description": "Bucky Crew Neck Sweatshirt",
-      "id": 2,
-      "image": "https://www.uwbookstore.com/storeimages/177-843542-1_hi.jpg",
-      "name": "Bucky Crew Neck Sweatshirt",
-      "price": 40
-          }
+      {
+          "category": "sweatshirts",
+          "count": 1,
+          "description": "Bucky Crew Neck Sweatshirt",
+          "id": 2,
+          "image": "https://www.uwbookstore.com/storeimages/177-843542-1_hi.jpg",
+          "name": "Bucky Crew Neck Sweatshirt",
+          "price": 40
+      }
 
 .. http:post:: /application/products/<product_id>
 
@@ -410,9 +411,9 @@ Application Cart - HTTP Endpoints
 
     .. sourcecode:: http
                   
-          {
-        "message": "Product added to cart!"
-          }
+        {
+            "message": "Product added to cart!"
+        }
   
 .. http:delete:: /application/products/
 
@@ -432,9 +433,9 @@ Application Cart - HTTP Endpoints
 
     .. sourcecode:: http
                 
-          {
-        "message": "Cart cleared!"
-          }
+        {
+            "message": "Cart cleared!"
+        }
     
 .. http:delete:: /application/products/<product_id>
 
@@ -474,9 +475,9 @@ Application Cart - HTTP Endpoints
 
     .. sourcecode:: http
                 
-          {
-        "message": "Product removed from cart!"
-          }
+        {
+            "message": "Product removed from cart!"
+        }
     
 
 Application Messages
@@ -541,22 +542,22 @@ Application Messages - HTTP Endpoints
 
     .. sourcecode:: http
                 
-          {
-      "messages": [
-          {
-              "date": "2025-04-15T04:29:19.153564",
-              "id": 34961,
-              "isUser": false,
-              "text": "Do you have some red pillowcases in store?"
-          },
-          {
-              "date": "2025-04-15T04:30:59.373200",
-              "id": 34962,
-              "isUser": false,
-              "text": "Do you sell used textbooks?"
-          }
-            ]
-          }
+      {
+          "messages": [
+              {
+                  "date": "2025-04-15T04:29:19.153564",
+                  "id": 34961,
+                  "isUser": false,
+                  "text": "Do you have some red pillowcases in store?"
+              },
+              {
+                  "date": "2025-04-15T04:30:59.373200",
+                  "id": 34962,
+                  "isUser": false,
+                  "text": "Do you sell used textbooks?"
+              }
+          ]
+      }
 
 .. http:get:: /application/messages/<message_id>/
 
@@ -596,12 +597,12 @@ Application Messages - HTTP Endpoints
 
     .. sourcecode:: http
                 
-          {
-              "date": "2025-04-15T04:30:59.373200",
-              "id": 34962,
-              "isUser": false,
-              "text": "Do you sell used textbooks?"
-          }
+        {
+            "date": "2025-04-15T04:30:59.373200",
+            "id": 34962,
+            "isUser": false,
+            "text": "Do you sell used textbooks?"
+        }
 
 
 .. http:post:: /application/messages/
@@ -619,19 +620,19 @@ Application Messages - HTTP Endpoints
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
         
-            {
-        "isUser": "false",
-        "text": "Do you have some red pillowcases in store?"
-            }
+        {
+            "isUser": "false",
+            "text": "Do you have some red pillowcases in store?"
+        }
 
   **Example response**:
 
     .. sourcecode:: http
                 
-          {
-        "id": 34961,
-        "message": "Message created!"
-          } 
+      {
+          "id": 34961,
+          "message": "Message created!"
+      } 
 
 .. http:delete:: /application/messages/
 
@@ -651,9 +652,9 @@ Application Messages - HTTP Endpoints
 
     .. sourcecode:: http
                 
-          {
-        "message": "All messages removed from application state!"
-          }
+      {
+          "message": "All messages removed from application state!"
+      }
 
 .. http:delete:: /application/messages/<message_id>/
 
@@ -693,6 +694,6 @@ Application Messages - HTTP Endpoints
 
     .. sourcecode:: http
                 
-          {
-        "message": "Message deleted!"
-          }
+      {
+          "message": "Message deleted!"
+      }

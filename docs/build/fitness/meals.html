@@ -163,7 +163,7 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../shopping/index.html">Shopping</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Application, Application States, Tags, Products, and Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/categories.html">Categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/tags.html">Tags</a></li>
@@ -268,20 +268,20 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;meals&quot;: [
-    {
-        &quot;date&quot;: &quot;2025-04-14T07:54:40.345729&quot;,
-        &quot;id&quot;: 2174,
-        &quot;name&quot;: &quot;bacon, eggs, and bagel&quot;
-    },
-    {
-        &quot;date&quot;: &quot;2025-04-14T07:59:55.897241&quot;,
-        &quot;id&quot;: 2175,
-        &quot;name&quot;: &quot;chicken, rice, and carrots&quot;
-      }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;meals&quot;: [
+        {
+            &quot;date&quot;: &quot;2025-04-14T07:54:40.345729&quot;,
+            &quot;id&quot;: 2174,
+            &quot;name&quot;: &quot;bacon, eggs, and bagel&quot;
+        },
+        {
+            &quot;date&quot;: &quot;2025-04-14T07:59:55.897241&quot;,
+            &quot;id&quot;: 2175,
+            &quot;name&quot;: &quot;chicken, rice, and carrots&quot;
+        }
     ]
-  }
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -336,11 +336,11 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;date&quot;: &quot;2025-04-14T07:54:40.345729&quot;,
-&quot;id&quot;: 2174,
-&quot;name&quot;: &quot;bacon, eggs, and bagel&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;date&quot;: &quot;2025-04-14T07:54:40.345729&quot;,
+    &quot;id&quot;: 2174,
+    &quot;name&quot;: &quot;bacon, eggs, and bagel&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -358,18 +358,18 @@ Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;name&quot;: &quot;bacon and eggs&quot;,
-  }
+{
+    &quot;name&quot;: &quot;bacon and eggs&quot;,
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;id&quot;: 2174,
-&quot;message&quot;: &quot;Meal created!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;id&quot;: 2174,
+    &quot;message&quot;: &quot;Meal created!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -419,18 +419,18 @@ Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;name&quot;: &quot;bacon, eggs, and a bagel&quot;,
-  }
+{
+    &quot;name&quot;: &quot;bacon, eggs, and a bagel&quot;,
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;id&quot;: 2174,
-&quot;message&quot;: &quot;Meal updated!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;id&quot;: 2174,
+    &quot;message&quot;: &quot;Meal updated!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -484,9 +484,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Meal deleted!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Meal deleted!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -614,32 +614,32 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 <p><strong>Example response</strong>:</p>
 <blockquote>
 <div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
-&quot;foods&quot;: [
-    {
-        &quot;calories&quot;: 25,
-        &quot;carbohydrates&quot;: 6,
-        &quot;fat&quot;: 0.1,
-        &quot;id&quot;: 2451,
-        &quot;name&quot;: &quot;carrot&quot;,
-        &quot;protein&quot;: 0.6
-    },
-    {
-        &quot;calories&quot;: 165,
-        &quot;carbohydrates&quot;: 0,
-        &quot;fat&quot;: 3.6,
-        &quot;id&quot;: 2452,
-        &quot;name&quot;: &quot;chicken breast&quot;,
-        &quot;protein&quot;: 31
-    },
-    {
-        &quot;calories&quot;: 206,
-        &quot;carbohydrates&quot;: 45,
-        &quot;fat&quot;: 0.4,
-        &quot;id&quot;: 2453,
-        &quot;name&quot;: &quot;white rice&quot;,
-        &quot;protein&quot;: 4.3
-    }
-  ]
+    &quot;foods&quot;: [
+        {
+            &quot;calories&quot;: 25,
+            &quot;carbohydrates&quot;: 6,
+            &quot;fat&quot;: 0.1,
+            &quot;id&quot;: 2451,
+            &quot;name&quot;: &quot;carrot&quot;,
+            &quot;protein&quot;: 0.6
+        },
+        {
+            &quot;calories&quot;: 165,
+            &quot;carbohydrates&quot;: 0,
+            &quot;fat&quot;: 3.6,
+            &quot;id&quot;: 2452,
+            &quot;name&quot;: &quot;chicken breast&quot;,
+            &quot;protein&quot;: 31
+        },
+        {
+            &quot;calories&quot;: 206,
+            &quot;carbohydrates&quot;: 45,
+            &quot;fat&quot;: 0.4,
+            &quot;id&quot;: 2453,
+            &quot;name&quot;: &quot;white rice&quot;,
+            &quot;protein&quot;: 4.3
+        }
+    ]
 }
 </pre></div>
 </div>
@@ -707,14 +707,14 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;calories&quot;: 165,
-&quot;carbohydrates&quot;: 0,
-&quot;fat&quot;: 3.6,
-&quot;id&quot;: 2452,
-&quot;name&quot;: &quot;chicken breast&quot;,
-&quot;protein&quot;: 31
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;calories&quot;: 165,
+    &quot;carbohydrates&quot;: 0,
+    &quot;fat&quot;: 3.6,
+    &quot;id&quot;: 2452,
+    &quot;name&quot;: &quot;chicken breast&quot;,
+    &quot;protein&quot;: 31
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -765,23 +765,23 @@ Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;name&quot;: &quot;carrot&quot;,
-&quot;measure&quot;: &quot;cup&quot;,
-&quot;calories&quot;: 52.0,
-&quot;protein&quot;: 1.2,
-&quot;carbohydrates&quot;: 12.3,
-&quot;fat&quot;: 0.3
-  }
+{
+    &quot;name&quot;: &quot;carrot&quot;,
+    &quot;measure&quot;: &quot;cup&quot;,
+    &quot;calories&quot;: 52.0,
+    &quot;protein&quot;: 1.2,
+    &quot;carbohydrates&quot;: 12.3,
+    &quot;fat&quot;: 0.3
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;id&quot;: 2451,
-&quot;message&quot;: &quot;Food created!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;id&quot;: 2451,
+    &quot;message&quot;: &quot;Food created!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -843,21 +843,21 @@ Host: example.com
 Accept: application/json
 x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;measure&quot;: &quot;unit&quot;,
-&quot;calories&quot;: 25.0,
-&quot;protein&quot;: 0.6,
-&quot;carbohydrates&quot;: 6.0,
-&quot;fat&quot;: 0.1
-  }
+{
+    &quot;measure&quot;: &quot;unit&quot;,
+    &quot;calories&quot;: 25.0,
+    &quot;protein&quot;: 0.6,
+    &quot;carbohydrates&quot;: 6.0,
+    &quot;fat&quot;: 0.1
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Food updated!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Food updated!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -923,9 +923,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Food deleted!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Food deleted!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>

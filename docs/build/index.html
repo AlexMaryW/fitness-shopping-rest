@@ -163,7 +163,7 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="shopping/index.html">Shopping</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Application, Application States, Tags, Products, and Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/categories.html">Categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shopping/tags.html">Tags</a></li>
@@ -203,13 +203,33 @@
           </label>
         </div>
         <article role="main">
-          <section id="welcome-to-fitness-shopping-rest-api-s-documentation">
-<h1>Welcome to Fitness Shopping REST API’s documentation!<a class="headerlink" href="#welcome-to-fitness-shopping-rest-api-s-documentation" title="Permalink to this heading">#</a></h1>
-<section id="user-module-start-here">
-<h2><a class="reference internal" href="gettingstarted.html#user-module"><span class="std std-ref">User Module - Start Here</span></a><a class="headerlink" href="#user-module-start-here" title="Permalink to this heading">#</a></h2>
-</section>
+          <section id="fitness-shopping-rest-api-s-documentation">
+<h1>Fitness Shopping REST API’s Documentation<a class="headerlink" href="#fitness-shopping-rest-api-s-documentation" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/avigael/fitness-shopping-rest/tree/main">Fitness Shopping REST API</a> is an open-source backend designed to support both <a class="reference external" href="https://github.com/avigael/react-native-fitness-app">Fitness App</a> and <a class="reference external" href="https://github.com/avigael/dialogflow-shopping-site">Shopping Website</a>.
+It provides essential features for user management, fitness tracking, and shopping-related functionality.</p>
+<p>The <a class="reference internal" href="gettingstarted.html#user-module"><span class="std std-ref">User module</span></a> allows you to register users, log them in, and authenticate HTTP requests using tokens, and securely store their information.</p>
+<p>The <a class="reference internal" href="fitness/index.html#fitness"><span class="std std-ref">Fitness module</span></a> allows you to track physical activities, meals, and goals related to calories (kcal) and macronutrients.</p>
+<p>The <a class="reference internal" href="shopping/index.html#shopping"><span class="std std-ref">Shopping module</span></a> allows you to to add and categorise, write product reviews, and managing messages.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All requests and responses use the <code class="docutils literal notranslate"><span class="pre">application/json</span></code> format.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>API Base URL: <code class="docutils literal notranslate"><span class="pre">https://example.com/api/</span></code></p>
+<p>All requests should be made to this base URL, followed by the relevant endpoint.
+For example: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">https://example.com/api/activities/</span></code></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Token-based authentication via BasicAuth is required for most HTTP endpoints. Tokens are provided upon successful login via the <a class="reference internal" href="gettingstarted.html#user-module"><span class="std std-ref">User module</span></a>.</p>
+</div>
+<div class="admonition-status-codes admonition">
+<p class="admonition-title">Status Codes</p>
+<p>This API follows standard <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status">HTTP status codes</a>.</p>
+</div>
 <section id="modules">
-<h2>Modules:<a class="headerlink" href="#modules" title="Permalink to this heading">#</a></h2>
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">User Module</a><ul>
@@ -245,9 +265,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="shopping/index.html">Shopping</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Application, Application States, Tags, Products, and Messages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="shopping/applications.html#application-and-application-states">Application and Application States</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="shopping/applications.html#application-state">Application State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shopping/applications.html">Application States, Tags, Products, and Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shopping/applications.html#application-states">Application States</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="shopping/applications.html#application-states-information">Application States Information</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shopping/applications.html#application-and-application-states-http-endpoints">Application and Application States - HTTP Endpoints</a></li>
 </ul>
 </li>
@@ -347,9 +367,8 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Welcome to Fitness Shopping REST API’s documentation!</a><ul>
-<li><a class="reference internal" href="#user-module-start-here"><span class="xref std std-ref">User Module - Start Here</span></a></li>
-<li><a class="reference internal" href="#modules">Modules:</a></li>
+<li><a class="reference internal" href="#">Fitness Shopping REST API’s Documentation</a><ul>
+<li><a class="reference internal" href="#modules">Modules</a></li>
 </ul>
 </li>
 </ul>

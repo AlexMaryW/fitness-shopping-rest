@@ -3,14 +3,39 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Fitness Shopping REST API's documentation!
+Fitness Shopping REST API's Documentation
 =====================================================
 
-:ref:`User Module - Start Here<User Module>`
-````````````````````````````````````````````
+`Fitness Shopping REST API <https://github.com/avigael/fitness-shopping-rest/tree/main>`_ is an open-source backend designed to support both `Fitness App <https://github.com/avigael/react-native-fitness-app>`_ and `Shopping Website <https://github.com/avigael/dialogflow-shopping-site>`_.
+It provides essential features for user management, fitness tracking, and shopping-related functionality.
 
 
-Modules:
+The :ref:`User module<User module>` allows you to register users, log them in, and authenticate HTTP requests using tokens, and securely store their information. 
+
+
+The :ref:`Fitness module<Fitness>` allows you to track physical activities, meals, and goals related to calories (kcal) and macronutrients.
+
+
+The :ref:`Shopping module<Shopping>` allows you to to add and categorise, write product reviews, and managing messages.
+
+.. note::
+   All requests and responses use the ``application/json`` format.
+
+.. important::
+   API Base URL: ``https://example.com/api/``
+   
+   All requests should be made to this base URL, followed by the relevant endpoint.  
+   For example: ``GET https://example.com/api/activities/``
+
+.. warning::
+   Token-based authentication via BasicAuth is required for most HTTP endpoints. Tokens are provided upon successful login via the :ref:`User module<User module>`.
+
+.. admonition:: Status Codes
+
+   This API follows standard `HTTP status codes <https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status>`_.
+
+
+Modules
 ````````
 
 .. toctree::

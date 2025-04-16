@@ -163,7 +163,7 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../shopping/index.html">Shopping</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Application, Application States, Tags, Products, and Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shopping/applications.html">Application States, Tags, Products, and Messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/categories.html">Categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/products.html">Products, Product Reviews, and Product Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../shopping/tags.html">Tags</a></li>
@@ -275,17 +275,17 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;activities&quot;: [
-  {
-    &quot;calories&quot;: 150,
-    &quot;date&quot;: &quot;2025-04-14T07:02:33.728136&quot;,
-    &quot;duration&quot;: 45,
-    &quot;id&quot;: 5124,
-    &quot;name&quot;: &quot;jogging&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;activities&quot;: [
+        {
+            &quot;calories&quot;: 150,
+            &quot;date&quot;: &quot;2025-04-14T07:02:33.728136&quot;,
+            &quot;duration&quot;: 45,
+            &quot;id&quot;: 5124,
+            &quot;name&quot;: &quot;jogging&quot;
+        }
     ]
-  }
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -340,13 +340,13 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;calories&quot;: 250,
-&quot;date&quot;: &quot;2025-04-14T07:02:33.728136&quot;,
-&quot;duration&quot;: 45,
-&quot;id&quot;: 5124,
-&quot;name&quot;: &quot;jogging&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;calories&quot;: 250,
+    &quot;date&quot;: &quot;2025-04-14T07:02:33.728136&quot;,
+    &quot;duration&quot;: 45,
+    &quot;id&quot;: 5124,
+    &quot;name&quot;: &quot;jogging&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -359,25 +359,25 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 For each unique activity, you can add <a class="reference internal" href="#activity-information"><span class="std std-ref">the following information</span></a>.</p>
 <p><strong>Example request</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  POST /activities/
-  Host: example.com
-  Accept: application/json
-  x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>POST /activities/
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;name&quot;: &quot;jogging&quot;,
-&quot;duration&quot;: 45.0,
-&quot;calories&quot;: 150.0
-  }
+{
+  &quot;name&quot;: &quot;jogging&quot;,
+  &quot;duration&quot;: 45.0,
+  &quot;calories&quot;: 150.0
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>    {
-&quot;id&quot;: 5124,
-&quot;message&quot;: &quot;Activity created!&quot;
-    }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;id&quot;: 5124,
+    &quot;message&quot;: &quot;Activity created!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -422,22 +422,22 @@ For each unique activity, you can add <a class="reference internal" href="#activ
 </div>
 <p><strong>Example request</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  PUT /activities/5124
-  Host: example.com
-  Accept: application/json
-  x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>PUT /activities/5124
+Host: example.com
+Accept: application/json
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
 
-  {
-&quot;duration&quot;: 60.0,
-  }
+{
+  &quot;duration&quot;: 60.0,
+}
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>  {
-&quot;message&quot;: &quot;Activity updated!&quot;
-  }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Activity updated!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>
@@ -491,9 +491,9 @@ x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U
 </div></blockquote>
 <p><strong>Example response</strong>:</p>
 <blockquote>
-<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span> {
-&quot;message&quot;: &quot;Activity deleted!&quot;
- }
+<div><div class="highlight-http notranslate"><div class="highlight"><pre><span></span>{
+    &quot;message&quot;: &quot;Activity deleted!&quot;
+}
 </pre></div>
 </div>
 </div></blockquote>

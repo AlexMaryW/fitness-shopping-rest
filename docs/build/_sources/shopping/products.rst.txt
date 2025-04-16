@@ -72,26 +72,26 @@ Product - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "products": [
-          {
-            "category": "plushes",
-            "description": "A perfect fuzzy, fluffy, Bucky Badger!",
-            "id": 3,
-            "image": "https://www.uwbookstore.com/storeimages/177-260250-2_hi.jpg",
-            "name": "Bucky Badger Plush",
-            "price": 13
-          },
-          {
-            "category": "leggings",
-            "description": "Show off your Wisconsin spirit with these Bucky Badger leggings! These leggings feature a red spacedye detail down either side. They have a full color Bucky Badger on the left side and come complete with side pockets for your phone or other belongings. They're perfect for game day or wearing to the gym!",
-            "id": 4,
-            "image": "https://www.uwbookstore.com/storeimages/177-1532069-2_hi.jpg",
-            "name": "Wisconsin Leggings",
-            "price": 50
-            }
+      {
+          "products": [
+              {
+                  "category": "plushes",
+                  "description": "A perfect fuzzy, fluffy, Bucky Badger!",
+                  "id": 3,
+                  "image": "https://www.uwbookstore.com/storeimages/177-260250-2_hi.jpg",
+                  "name": "Bucky Badger Plush",
+                  "price": 13
+              },
+              {
+                  "category": "leggings",
+                  "description": "Show off your Wisconsin spirit with these Bucky Badger leggings! These leggings feature a red spacedye detail down either side. They have a full color Bucky Badger on the left side and come complete with side pockets for your phone or other belongings. They're perfect for game day or wearing to the gym!",
+                  "id": 4,
+                  "image": "https://www.uwbookstore.com/storeimages/177-1532069-2_hi.jpg",
+                  "name": "Wisconsin Leggings",
+                  "price": 50
+              }
           ]
-        }
+      }
 
 .. http:get:: /products/<product_id>
 
@@ -131,14 +131,14 @@ Product - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "category": "bottoms",
-      "description": "Stay feeling cool during hot Madison summers or when working out at the Nat with these loose Under Armour Wisconsin Qualifier Shorts that have an ultra-lightweight, stretchy woven fabric that delivers superior mobility. The Moisture Transport System wicks sweat and dries fast. There is an encased elastic waistband with an external drawcord, a notch at the hem which allows for better lateral movement and mesh hand pockets.",
-      "id": 16,
-      "image": "https://www.uwbookstore.com/storeimages/177-1554007-1_hi.png",
-      "name": "Wisconsin Qualifier Woven Short",
-      "price": 50
-        }
+      {
+          "category": "bottoms",
+          "description": "Stay feeling cool during hot Madison summers or when working out at the Nat with these loose Under Armour Wisconsin Qualifier Shorts that have an ultra-lightweight, stretchy woven fabric that delivers superior mobility. The Moisture Transport System wicks sweat and dries fast. There is an encased elastic waistband with an external drawcord, a notch at the hem which allows for better lateral movement and mesh hand pockets.",
+          "id": 16,
+          "image": "https://www.uwbookstore.com/storeimages/177-1554007-1_hi.png",
+          "name": "Wisconsin Qualifier Woven Short",
+          "price": 50
+      }
 
 .. http:post:: /products/
 
@@ -166,22 +166,22 @@ Product - HTTP Endpoints
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
           
-          {
-        "name": "Red Pillow Case"
-        "category": "pillows"
-        "description": "A vibrant red pillowcase made from soft, breathable fabric. Smooth to the touch with a rich, bold hue that adds a pop of color and warmth to any bedding setup. Finished with clean stitching and a subtle sheen for a touch of elegance."
-        "image": "https://www.uwbookstore.com/storeimages/Red-Pillow-PNG-Image.png"
-        "price": "7.99"
-          }
+        {
+            "name": "Red Pillow Case",
+            "category": "pillows",
+            "description": "A vibrant red pillowcase made from soft, breathable fabric. Smooth to the touch with a rich, bold hue that adds a pop of color and warmth to any bedding setup. Finished with clean stitching and a subtle sheen for a touch of elegance.",
+            "image": "https://www.uwbookstore.com/storeimages/Red-Pillow-PNG-Image.png",
+            "price": "7.99"
+        }
 
   **Example response**:
 
     .. sourcecode:: http
                 
-        {
-      "id": 33,
-      "message": "Product created!"
-        }
+      {
+          "id": 33,
+          "message": "Product created!"
+      }
 
 .. http:put:: /products/<product_id>
 
@@ -224,17 +224,17 @@ Product - HTTP Endpoints
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
           
-          {
-        "price": "10.99"
-          }
+        {
+            "price": "10.99"
+        }
 
   **Example response**:
 
     .. sourcecode:: http
                 
-        {
-      "message": "Product updated!"
-        }
+      {
+          "message": "Product updated!"
+      }
 
 .. http:delete:: /products/<product_id>/
 
@@ -282,9 +282,9 @@ Product - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "message": "Product deleted!"
-        }
+      {
+          "message": "Product deleted!"
+      }
 
 
 Product Tags
@@ -354,13 +354,13 @@ Product Tags - HTTP Points
 
     .. sourcecode:: http
                 
-        {
-      "tags": [
-          "red",
-          "cotton",
-          "pillow",
+      {
+          "tags": [
+              "red",
+              "cotton",
+              "pillow",
           ]
-        }
+      }
 
 .. http:post:: /products/<product_id>/tags/<tag>
 
@@ -412,9 +412,9 @@ Product Tags - HTTP Points
 
     .. sourcecode:: http
                 
-        {
-      "message": "Tag added!"
-        }
+      {
+          "message": "Tag added!"
+      }
 
 .. http:delete:: /products/<product_id>/tags/<tag>
 
@@ -466,9 +466,9 @@ Product Tags - HTTP Points
 
     .. sourcecode:: http
                 
-        {
-      "message": "Tag deleted!"
-        }
+      {
+          "message": "Tag deleted!"
+      }
 
 
 Product Reviews
@@ -553,12 +553,12 @@ Product Reviews - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "reviews": [
-          "Great quality for the price! The fabric feels soft and the color really brightens up my room.",
-          "Exactly what I was looking for—simple, bold, and comfortable. Would definitely buy again."
+      {
+          "reviews": [
+              "Great quality for the price! The fabric feels soft and the color really brightens up my room.",
+              "Exactly what I was looking for—simple, bold, and comfortable. Would definitely buy again."
           ]
-        }
+      }
 
 
 .. http:get:: /products/<product_id>/reviews/<review_id>
@@ -606,12 +606,12 @@ Product Reviews - HTTP Endpoints
 
     .. sourcecode:: http
                 
-        {
-      "id": 33
-      "title": "Soft, Stylish, and Budget-Friendly"
-      "stars": 4.0
-      "text": "Great quality for the price! The fabric feels soft and the color really brightens up my room."
-        }
+      {
+          "id": 33
+          "title": "Soft, Stylish, and Budget-Friendly"
+          "stars": 4.0
+          "text": "Great quality for the price! The fabric feels soft and the color really brightens up my room."
+      }
 
 
 .. http:post:: /products/<product_id>/reviews/
@@ -656,21 +656,21 @@ Product Reviews - HTTP Endpoints
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
           
-          {
-        "id": 33,
-        "title": "Great Everyday Pillowcase",
-        "stars": 4.5,
-        "text": "Nice pop of color and fits my pillow perfectly. Not luxury, but great value for everyday use."
-          }        
+        {
+            "id": 33,
+            "title": "Great Everyday Pillowcase",
+            "stars": 4.5,
+            "text": "Nice pop of color and fits my pillow perfectly. Not luxury, but great value for everyday use."
+        }        
 
   **Example response**:
 
     .. sourcecode:: http
                 
-          {
-        "id": 3,
-        "message": "Review added!"
-          } 
+      {
+          "id": 3,
+          "message": "Review added!"
+      } 
 
 
 .. http:put:: /products/<product_id>/reviews/<review_id>
@@ -721,17 +721,17 @@ Product Reviews - HTTP Endpoints
         Accept: application/json
         x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmVkb2U0NCIsImV4cCI6MTc0NDYyOTM3OX0.43dgIGUbKHtbDs5XqzCl_MFsKFgMyFo_SyKY1sLmCu4
           
-          {
-        "stars": 4.0
-          }        
+        {
+            "stars": 4.0
+        }        
 
   **Example response**:
 
     .. sourcecode:: http
                 
-          {
-        "message": "Review updated!"
-          } 
+        {
+            "message": "Review updated!"
+        } 
 
 .. http:delete:: /products/<product_id>/reviews/<review_id>
 
@@ -786,6 +786,6 @@ Product Reviews - HTTP Endpoints
 
     .. sourcecode:: http
                 
-          {
-        "message": "Review deleted!"
-          } 
+        {
+            "message": "Review deleted!"
+        } 
