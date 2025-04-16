@@ -16,17 +16,10 @@ The :ref:`User module<User module>` allows you to register users, log them in, a
 The :ref:`Fitness module<Fitness>` allows you to track physical activities, meals, and goals related to calories (kcal) and macronutrients.
 
 
-The :ref:`Shopping module<Shopping>` allows you to to add and categorise, write product reviews, and managing messages.
-
+The :ref:`Shopping module<Shopping>` allows you to to add and categorise products, write product reviews, and manage messages.
 
 
 .. important::
-   API Base URL: ``https://example.com/api/``
-   
-   All requests should be made to this base URL, followed by the relevant endpoint.  
-   For example: ``GET https://example.com/api/activities/``
-
-.. warning::
    Token-based authentication via BasicAuth is required for most HTTP endpoints. Tokens are provided upon successful login via the :ref:`User module<User module>`.
 
 .. admonition:: Status Codes
